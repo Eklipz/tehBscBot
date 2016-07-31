@@ -47,7 +47,6 @@ Banned Lists.
 -------------
 |Name|Link|
 |:-------------------------------------------------:|:-------------------------------------------------:|
-|N.S.F.W|https://github.com/ureadmyname/basicBot-customization/blob/master/ExampleNSFWlist.json|
-|O.P|https://github.com/ureadmyname/basicBot-customization/blob/master/ExampleOPlist.json|
-|BANNED|https://github.com/ureadmyname/basicBot-customization/blob/master/ExampleBANNEDlist.json|
-|Song Names|https://github.com/ureadmyname/basicBot-customization/blob/master/skiplists.txt|
+|N.S.F.W|https://github.com/Eklipz/tehBscBot/blob/master/NSFWList.json|
+|O.P|https://github.com/Eklipz/tehBscBot/blob/master/OPList.json|
+|BANNED|https://github.com/Eklipz/tehBscBot/blob/master/BanList.json||
