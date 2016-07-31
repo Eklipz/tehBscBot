@@ -3372,21 +3372,21 @@ console.log(basicBot.room.name);
                         msg += basicBot.chat.afksremoved + ": " + basicBot.room.afkList.length + '. ';
                         msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + '. ';
 
-                        msg += 'Bouncer+: ';
+/*                        msg += 'Bouncer+: ';
                         if (basicBot.settings.bouncerPlus) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
-                                                
+*/                                                
                         msg += basicBot.chat.blacklist + ': ';
                         if (basicBot.settings.blacklistEnabled) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
-
+/*
                         msg += basicBot.chat.lockguard + ': ';
                         if (basicBot.settings.lockGuard) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
-
+*/
                         msg += basicBot.chat.cycleguard + ': ';
                         if (basicBot.settings.cycleGuard) msg += 'ON';
                         else msg += 'OFF';
