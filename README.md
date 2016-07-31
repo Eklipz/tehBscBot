@@ -27,14 +27,14 @@ Commands.
 ---------
 |Name|Link|
 |:-------------------------------------------------:|:-------------------------------------------------:|
-|Command List|https://github.com/ureadmyname/basicBot/blob/master/commands.md|
+|Command List|https://github.com/Eklipz/tehBscBot/blob/master/COMMANDS.md|
 
 
 Tips To Get Staff.
 ------------------
 |Name|Link|
 |:-------------------------------------------------:|:-------------------------------------------------:|
-|Tips|https://github.com/ureadmyname/Tips-To-Getting-Staff/blob/master/Tips.md|
+|Tips|https://github.com/Eklipz/tehBscBot/blob/master/TIPS.md|
 
 Staff.
 ------
