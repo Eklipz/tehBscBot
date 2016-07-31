@@ -286,7 +286,7 @@ return str;
             filterChat: true,
             etaRestriction: false,
             welcome: true,
-            opLink: null,
+            opLink: "https://github.com/Eklipz/tehBscBot/blob/master/BLACKLIST.md",
             rulesLink: "https://github.com/Eklipz/tehBscBot/blob/master/RULES.md",
             themeLink: null,
             fbLink: null,
@@ -295,7 +295,7 @@ return str;
             intervalMessages: [],
             messageInterval: 5,
             songstats: false,
-            commandLiteral: "$",
+            commandLiteral: "!",
             blacklists: {
                 NSFW: "https://rawgit.com/Eklipz/tehBscBot/master/NSFWList.json",
                 OP: "https://rawgit.com/Eklipz/tehBscBot/master/OPList.json",
