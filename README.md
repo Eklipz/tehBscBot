@@ -9,13 +9,13 @@ basicBot.
 ------------
 |Name|Link|
 |:-------------------------------------------------:|:-------------------------------------------------:|
-|basicBot.js|https://github.com/ureadmyname/basicBot/blob/master/basicBot.js|
+|basicBot.js|https://rawgit.com/Eklipz/tehBscBot/master/basicBot.js|
 
 Extension.
 ----------
 |Name|Link|
 |:-------------------------------------------------:|:-------------------------------------------------:|
-|Extension|https://github.com/ureadmyname/basicBot-customization/blob/master/extension.js|
+|Extension|https://rawgit.com/Eklipz/tehBscBot/master/extension.js|
 
 Rules.
 ------
