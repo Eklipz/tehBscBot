@@ -11,6 +11,7 @@ var autoDiscord = true;
 var autoFav = true;
 var autoRoulette = false;
 var autoRules = true;
+var autoTwitch = false;
 var bot = window.bot;
 var minute= 1000 * 60;
 
@@ -48,6 +49,13 @@ API.sendChat("!discord");
 }
 },
 1000 * 60 * 87);
+
+setInterval(function () {
+if(autoTwitch === true) {
+API.sendChat("!twitchlive");
+}
+},
+1000 * 60 * 15);
 
 bot.commands.abuseCommand = {
 command: 'abuse',
@@ -101,6 +109,17 @@ if (!bot.commands.executable(this.rank, chat)) return void (0);
 else {
 autoRules = !autoRules;
 API.sendChat("/me Rules now set to " + autoRules);}}};
+
+bot.commands.automateTwitch = {
+command: ['autotwitch'],
+rank: 'manager',
+type: 'exact',
+functionality: function (chat, cmd) {
+if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+if (!bot.commands.executable(this.rank, chat)) return void (0);
+else {
+autoTwitch = !autoTwitch;
+API.sendChat("/me Twitch message now set to " + autoTwitch);}}};
 
 bot.commands.dcinfoCommand = {
 command: 'dcinfo',
@@ -183,6 +202,24 @@ if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0)
 if (!bot.commands.executable(this.rank, chat)) return void (0);
 else {API.sendChat("/me What are subscriptions? http://goo.gl/Lcw6wX");}}};
 
+bot.commands.twitchCommand = {
+command: 'twitch',
+rank: 'user',
+type: 'exact',
+functionality: function (chat, cmd) {
+if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+if (!bot.commands.executable(this.rank, chat)) return void (0);
+else {API.sendChat("/me https://www.twitch.tv/tehsmileys");}}};
+
+bot.commands.twitchliveCommand = {
+command: 'twitchlive',
+rank: 'manager',
+type: 'exact',
+functionality: function (chat, cmd) {
+if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+if (!bot.commands.executable(this.rank, chat)) return void (0);
+else {API.sendChat("/me TehSmileys is live right now! Come watch her stream with us here: https://www.twitch.tv/tehsmileys");}}};
+
 //
 bot.loadChat();}
 localStorage.setItem("basicBotsettings", JSON.stringify({
@@ -244,8 +281,8 @@ messageInterval: 30,
 songstats: false,
 commandLiteral: "$",
 blacklists: {
-NSFW: "N/A",
-OP: "N/A",
-BANNED: "N/A"}}));
+NSFW: "https://github.com/Eklipz/tehBscBot/blob/master/NSFWList.json",
+OP: "https://github.com/Eklipz/tehBscBot/blob/master/OPList.json",
+BANNED: "https://github.com/Eklipz/tehBscBot/blob/master/BanList.json"}}));
 $.getScript("https://rawgit.com/Eklipz/tehBscBot/master/basicBot.js", extend);
 }).call(this);
