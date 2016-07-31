@@ -17,6 +17,12 @@ Extension.
 |:-------------------------------------------------:|:-------------------------------------------------:|
 |Extension|https://github.com/ureadmyname/basicBot-customization/blob/master/extension.js|
 
+Rules.
+------
+|Name|Link|
+|:-------------------------------------------------:|:-------------------------------------------------:|
+|Rules|https://github.com/Eklipz/tehBscBot/blob/master/RULES.md|
+
 Commands.
 ---------
 |Name|Link|
@@ -34,13 +40,8 @@ Staff.
 ------
 |Name|Link|
 |:-------------------------------------------------:|:-------------------------------------------------:|
-|Staff|https://github.com/ureadmyname/AnEDMTrap/blob/master/Staff.md|
+|Staff|https://github.com/Eklipz/tehBscBot/blob/master/STAFF.md|
 
-Rules.
-------
-|Name|Link|
-|:-------------------------------------------------:|:-------------------------------------------------:|
-|Rules|https://github.com/ureadmyname/AnEDMTrap/blob/master/rules.md|
 
 Banned Lists.
 -------------
