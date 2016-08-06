@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.5",
+        version: "4.20.6",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -266,13 +266,11 @@ return str;
             timeGuard: true,
             maximumSongLength: 10,
             autodisable: true,
-            //-----------------------------------------------------------TESTING
-            autoDiscord: true,
-            autoFav: true,
-            autoRoulette: false,
-            autoRules: true,
-            autoTwitch: false,
-            //----------------------------------------------------------TESTING
+            autodiscord: true,
+            autofav: true,
+            autoroulette: false,
+            autorules: true,
+            autotwitch: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
             skipPosition: 3,
@@ -1414,35 +1412,35 @@ return str;
             }, 60 * 60 * 1000);
 // -------------------------------------------------------------------------------------------------------> TESTING
             setInterval(function () {
-                if(autoRoulette === true) {
+                if(basicBot.settings.autoroulette === true) {
                     API.sendChat("!roulette");
                 }
             },
             1000 * 60 * 58);
 
             setInterval(function () {
-                if(autoFav === true) {
+                if(basicBot.settings.autofav === true) {
                     API.sendChat("!fav");
                 }
             },
             1000 * 60 * 67);
                     
             setInterval(function () {
-                if(autoRules === true) {
+                if(basicBot.settings.autorules === true) {
                     API.sendChat("!rules");
                 }
             },
             1000 * 60 * 78);
 
             setInterval(function () {
-                if(autoDiscord === true) {
+                if(basicBot.settings.autodiscord === true) {
                     API.sendChat("!discord");
                 }
             },
             1000 * 60 * 87);
 
             setInterval(function () {
-                if(autoTwitch === true) {
+                if(basicBot.settings.autotwitch === true) {
                     API.sendChat("!twitchlive");
                 }
             },
@@ -1736,7 +1734,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------------------------------------TESTING
+
             autodiscordCommand: {
                 command: 'autodiscord',
                 rank: 'bouncer',
@@ -1841,7 +1839,66 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------------------------------------TESTING
+//----------------------------------------------------------------------------------------------TESTING
+            autosCommand: {
+                command: 'autos',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var from = chat.un;
+                        var msg = '[@' + from + '] ';
+
+                        msg += basicBot.chat.autodisable + ': ';
+                        if (basicBot.settings.autodisable) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.autodiscord + ': ';
+                        if (basicBot.settings.autodiscord) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.autofav + ': ';
+                        if (basicBot.settings.autofav) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.autoroulette + ': ';
+                        if (basicBot.settings.autoroulette) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.autorules + ': ';
+                        if (basicBot.settings.autorules) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.autotwitch + ': ';
+                        if (basicBot.settings.autotwitch) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        if (msg.length > 250){
+                        var split = msg.match(/.{1,250}/g);
+                             for (var i = 0; i < split.length; i++) {
+                                 var func = function(index) {
+                                     setTimeout(function() {
+                                        API.sendChat("/me " + split[index]);
+                                    }, 500 * index);
+                                }
+                                func(i);
+                            }
+                        }
+                        else {
+                            return API.sendChat(msg);
+                        }
+                    }
+                }
+            },
+//----------------------------------------------------------------------------------------------TESTING
             autoskipCommand: {
                 command: 'autoskip',
                 rank: 'mod',
@@ -2188,7 +2245,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             cycleinfoCommand: {
                 command: 'cycleinfo',
                 rank: 'user',
@@ -2201,7 +2258,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             cycletimerCommand: {
                 command: 'cycletimer',
                 rank: 'manager',
@@ -2245,7 +2302,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             dcinfoCommand: {
                 command: 'dcinfo',
                 rank: 'user',
@@ -2258,7 +2315,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             deletechatCommand: {
                 command: 'deletechat',
                 rank: 'mod',
@@ -2282,7 +2339,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             discordCommand: {
                 command: 'discord',
                 rank: 'user',
@@ -2295,7 +2352,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             emojiCommand: {
                 command: 'emoji',
                 rank: 'user',
@@ -2373,7 +2430,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             favCommand: {
                 command: 'fav',
                 rank: 'user',
@@ -2386,7 +2443,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             fbCommand: {
                 command: 'fb',
                 rank: 'user',
@@ -2567,7 +2624,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             guidelinesCommand: {
                 command: 'guidelines',
                 rank: 'user',
@@ -2580,7 +2637,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             helpCommand: {
                 command: 'help',
                 rank: 'user',
@@ -3195,7 +3252,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             refCommand: {
                 command: 'ref',
                 rank: 'user',
@@ -3208,7 +3265,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             refreshCommand: {
                 command: 'refresh',
                 rank: 'manager',
@@ -3298,7 +3355,7 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING RENAME ALL ROULETTE TO LOTTO
             rouletteCommand: {
                 command: 'roulette',
                 rank: 'manager',
@@ -3313,7 +3370,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             rouletteinfoCommand: {
                 command: 'rouletteinfo',
                 rank: 'user',
@@ -3591,7 +3648,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             staffCommand: {
                 command: 'staff',
                 rank: 'user',
@@ -3604,7 +3661,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             statusCommand: {
                 command: 'status',
                 rank: 'bouncer',
@@ -3697,7 +3754,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             subCommand: {
                 command: 'sub',
                 rank: 'user',
@@ -3710,7 +3767,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             swapCommand: {
                 command: 'swap',
                 rank: 'mod',
@@ -3841,7 +3898,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             twitchCommand: {
                 command: 'twitch',
                 rank: 'user',
@@ -3867,7 +3924,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
+
             unbanCommand: {
                 command: 'unban',
                 rank: 'bouncer',
