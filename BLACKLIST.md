@@ -1,4 +1,4 @@
-OP LIST: 
+Blacklisted Songs: 
 ========
 <ol>
 <li> Ice JJ Fish - *Everything* </li>
