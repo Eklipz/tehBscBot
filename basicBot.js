@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.6",
+        version: "4.20.7",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -268,7 +268,7 @@ return str;
             autodisable: true,
             autodiscord: true,
             autofav: true,
-            autoroulette: false,
+            autolotto: false,
             autorules: true,
             autotwitch: false,
             commandCooldown: 30,
@@ -356,22 +356,22 @@ return str;
             },
             newBlacklisted: [],
             newBlacklistedSongFunction: null,
-            roulette: {
-                rouletteStatus: false,
+            lotto: {
+                lottoStatus: false,
                 participants: [],
                 countdown: null,
-                startRoulette: function () {
-                    basicBot.room.roulette.rouletteStatus = true;
-                    basicBot.room.roulette.countdown = setTimeout(function () {
-                        basicBot.room.roulette.endRoulette();
+                startLotto: function () {
+                    basicBot.room.lotto.lottoStatus = true;
+                    basicBot.room.lotto.countdown = setTimeout(function () {
+                        basicBot.room.lotto.endLotto();
                     }, 60 * 1000);
                     API.sendChat(basicBot.chat.isopen);
                 },
-                endRoulette: function () {
-                    basicBot.room.roulette.rouletteStatus = false;
-                    var ind = Math.floor(Math.random() * basicBot.room.roulette.participants.length);
-                    var winner = basicBot.room.roulette.participants[ind];
-                    basicBot.room.roulette.participants = [];
+                endLotto: function () {
+                    basicBot.room.lotto.lottoStatus = false;
+                    var ind = Math.floor(Math.random() * basicBot.room.lotto.participants.length);
+                    var winner = basicBot.room.lotto.participants[ind];
+                    basicBot.room.lotto.participants = [];
                     var pos = (API.getWaitList().length - API.getWaitList().length + 1);
                     var user = basicBot.userUtilities.lookupUser(winner);
                     var name = user.username;
@@ -1185,18 +1185,18 @@ return str;
                     return true;
                 }
 
-                var rlJoinChat = basicBot.chat.roulettejoin;
-                var rlLeaveChat = basicBot.chat.rouletteleave;
+                var rlJoinChat = basicBot.chat.lottojoin;
+                var rlLeaveChat = basicBot.chat.lottoleave;
 
-                var joinedroulette = rlJoinChat.split('%%NAME%%');
-                if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
-                else joinedroulette = joinedroulette[0];
+                var joinedlotto = rlJoinChat.split('%%NAME%%');
+                if (joinedlotto[1].length > joinedlotto[0].length) joinedlotto = joinedlotto[1];
+                else joinedlotto = joinedlotto[0];
 
-                var leftroulette = rlLeaveChat.split('%%NAME%%');
-                if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
-                else leftroulette = leftroulette[0];
+                var leftlotto = rlLeaveChat.split('%%NAME%%');
+                if (leftlotto[1].length > leftlotto[0].length) leftlotto = leftlotto[1];
+                else leftlotto = leftlotto[0];
 
-                if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === basicBot.loggedInID) {
+                if ((msg.indexOf(joinedlotto) > -1 || msg.indexOf(leftlotto) > -1) && chat.uid === basicBot.loggedInID) {
                     setTimeout(function (id) {
                         API.moderateDeleteChat(id);
                     }, 5 * 1000, chat.cid);
@@ -1412,8 +1412,8 @@ return str;
             }, 60 * 60 * 1000);
 // -------------------------------------------------------------------------------------------------------> TESTING
             setInterval(function () {
-                if(basicBot.settings.autoroulette === true) {
-                    API.sendChat("!roulette");
+                if(basicBot.settings.autolotto === true) {
+                    API.sendChat("!lotto");
                 }
             },
             1000 * 60 * 58);
@@ -1777,21 +1777,21 @@ return str;
                 }
             },
 
-            autorouletteCommand: {
-                command: 'autoroulette',
+            autolottoCommand: {
+                command: 'autolotto',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        if (basicBot.settings.autoroulette) {
-                            basicBot.settings.autoroulette = !basicBot.settings.autoroulette;
-                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autoroulette}));
+                        if (basicBot.settings.autolotto) {
+                            basicBot.settings.autolotto = !basicBot.settings.autolotto;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autolotto}));
                         }
                         else {
-                            basicBot.settings.autoroulette = !basicBot.settings.autoroulette;
-                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autoroulette}));
+                            basicBot.settings.autolotto = !basicBot.settings.autolotto;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autolotto}));
                         }
 
                     }
@@ -1866,8 +1866,8 @@ return str;
                         else msg += 'OFF';
                         msg += '. ';
 
-                        msg += basicBot.chat.autoroulette + ': ';
-                        if (basicBot.settings.autoroulette) msg += 'ON';
+                        msg += basicBot.chat.autolotto + ': ';
+                        if (basicBot.settings.autolotto) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
 
@@ -2680,9 +2680,9 @@ return str;
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        if (basicBot.room.roulette.rouletteStatus && basicBot.room.roulette.participants.indexOf(chat.uid) < 0) {
-                            basicBot.room.roulette.participants.push(chat.uid);
-                            API.sendChat(subChat(basicBot.chat.roulettejoin, {name: chat.un}));
+                        if (basicBot.room.lotto.lottoStatus && basicBot.room.lotto.participants.indexOf(chat.uid) < 0) {
+                            basicBot.room.lotto.participants.push(chat.uid);
+                            API.sendChat(subChat(basicBot.chat.lottojoin, {name: chat.un}));
                         }
                     }
                 }
@@ -2844,10 +2844,10 @@ return str;
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        var ind = basicBot.room.roulette.participants.indexOf(chat.uid);
+                        var ind = basicBot.room.lotto.participants.indexOf(chat.uid);
                         if (ind > -1) {
-                            basicBot.room.roulette.participants.splice(ind, 1);
-                            API.sendChat(subChat(basicBot.chat.rouletteleave, {name: chat.un}));
+                            basicBot.room.lotto.participants.splice(ind, 1);
+                            API.sendChat(subChat(basicBot.chat.lottoleave, {name: chat.un}));
                         }
                     }
                 }
@@ -3356,30 +3356,30 @@ return str;
                 }
             },
 //--------------------------------------------------------------------------------------------------------------TESTING RENAME ALL ROULETTE TO LOTTO
-            rouletteCommand: {
-                command: 'roulette',
+            lottoCommand: {
+                command: 'lotto',
                 rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        if (!basicBot.room.roulette.rouletteStatus) {
-                            basicBot.room.roulette.startRoulette();
+                        if (!basicBot.room.lotto.lottoStatus) {
+                            basicBot.room.lotto.startLotto();
                         }
                     }
                 }
             },
 
-            rouletteinfoCommand: {
-                command: 'rouletteinfo',
+            lottoinfoCommand: {
+                command: 'lottoinfo',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        return API.sendChat(subChat(basicBot.chat.rouletteinfo));
+                        return API.sendChat(subChat(basicBot.chat.lottoinfo));
                     }
                 }
             },
