@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.3",
+        version: "4.20.5",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -266,6 +266,13 @@ return str;
             timeGuard: true,
             maximumSongLength: 10,
             autodisable: true,
+            //-----------------------------------------------------------TESTING
+            autoDiscord: true,
+            autoFav: true,
+            autoRoulette: false,
+            autoRules: true,
+            autoTwitch: false,
+            //----------------------------------------------------------TESTING
             commandCooldown: 30,
             usercommandsEnabled: true,
             skipPosition: 3,
@@ -1158,8 +1165,8 @@ return str;
                     return true;
                 }
                 if (basicBot.settings.cmdDeletion && msg.startsWith(basicBot.settings.commandLiteral)) {
-        API.moderateDeleteChat(chat.cid);
-        } 
+                    API.moderateDeleteChat(chat.cid);
+                } 
                 /**
                  var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
                  if (plugRoomLinkPatt.exec(msg)) {
@@ -1405,6 +1412,42 @@ return str;
             basicBot.room.autodisableInterval = setInterval(function () {
                 basicBot.room.autodisableFunc();
             }, 60 * 60 * 1000);
+// -------------------------------------------------------------------------------------------------------> TESTING
+            setInterval(function () {
+                if(autoRoulette === true) {
+                    API.sendChat("!roulette");
+                }
+            },
+            1000 * 60 * 58);
+
+            setInterval(function () {
+                if(autoFav === true) {
+                    API.sendChat("!fav");
+                }
+            },
+            1000 * 60 * 67);
+                    
+            setInterval(function () {
+                if(autoRules === true) {
+                    API.sendChat("!rules");
+                }
+            },
+            1000 * 60 * 78);
+
+            setInterval(function () {
+                if(autoDiscord === true) {
+                    API.sendChat("!discord");
+                }
+            },
+            1000 * 60 * 87);
+
+            setInterval(function () {
+                if(autoTwitch === true) {
+                    API.sendChat("!twitchlive");
+                }
+            },
+            1000 * 60 * 15);
+//-------------------------------------------------------------------------------------------------------> TESTING
             basicBot.loggedInID = API.getUser().id;
             basicBot.status = true;
             API.sendChat('/cap ' + basicBot.settings.startupCap);
@@ -1693,7 +1736,112 @@ return str;
                     }
                 }
             },
+//--------------------------------------------------------------------------------------------------------------------------------------------TESTING
+            autodiscordCommand: {
+                command: 'autodiscord',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.autodiscord) {
+                            basicBot.settings.autodiscord = !basicBot.settings.autodiscord;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autodiscord}));
+                        }
+                        else {
+                            basicBot.settings.autodiscord = !basicBot.settings.autodiscord;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autodiscord}));
+                        }
 
+                    }
+                }
+            },
+
+            autofavCommand: {
+                command: 'autofav',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.autofav) {
+                            basicBot.settings.autofav = !basicBot.settings.autofav;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autofav}));
+                        }
+                        else {
+                            basicBot.settings.autofav = !basicBot.settings.autofav;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autofav}));
+                        }
+
+                    }
+                }
+            },
+
+            autorouletteCommand: {
+                command: 'autoroulette',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.autoroulette) {
+                            basicBot.settings.autoroulette = !basicBot.settings.autoroulette;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autoroulette}));
+                        }
+                        else {
+                            basicBot.settings.autoroulette = !basicBot.settings.autoroulette;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autoroulette}));
+                        }
+
+                    }
+                }
+            },
+
+            autorulesCommand: {
+                command: 'autorules',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.autorules) {
+                            basicBot.settings.autorules = !basicBot.settings.autorules;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autorules}));
+                        }
+                        else {
+                            basicBot.settings.autorules = !basicBot.settings.autorules;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autorules}));
+                        }
+
+                    }
+                }
+            },
+
+            autotwitchCommand: {
+                command: 'autotwitch',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.autotwitch) {
+                            basicBot.settings.autotwitch = !basicBot.settings.autotwitch;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autotwitch}));
+                        }
+                        else {
+                            basicBot.settings.autotwitch = !basicBot.settings.autotwitch;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autotwitch}));
+                        }
+
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------------------------------------TESTING
             autoskipCommand: {
                 command: 'autoskip',
                 rank: 'mod',
@@ -2007,7 +2155,6 @@ return str;
                 }
             },
 
-
             cycleCommand: {
                 command: 'cycle',
                 rank: 'manager',
@@ -2041,7 +2188,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            cycleinfoCommand: {
+                command: 'cycleinfo',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.cycleinfo));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             cycletimerCommand: {
                 command: 'cycletimer',
                 rank: 'manager',
@@ -2085,7 +2245,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            dcinfoCommand: {
+                command: 'dcinfo',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.dcinfo));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             deletechatCommand: {
                 command: 'deletechat',
                 rank: 'mod',
@@ -2109,7 +2282,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            discordCommand: {
+                command: 'discord',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.discord));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             emojiCommand: {
                 command: 'emoji',
                 rank: 'user',
@@ -2187,7 +2373,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            favCommand: {
+                command: 'fav',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.fav));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             fbCommand: {
                 command: 'fb',
                 rank: 'user',
@@ -2368,7 +2567,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            guidelinesCommand: {
+                command: 'guidelines',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.guidelines));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             helpCommand: {
                 command: 'help',
                 rank: 'user',
@@ -2983,7 +3195,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            refCommand: {
+                command: 'ref',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.ref));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             refreshCommand: {
                 command: 'refresh',
                 rank: 'manager',
@@ -3088,7 +3313,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            rouletteinfoCommand: {
+                command: 'rouletteinfo',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.rouletteinfo));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             //-----------------------------------------
             // Rock Paper Scissors Lizard Spock
             // I'm sure there's an easier way to do
@@ -3353,7 +3591,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            staffCommand: {
+                command: 'staff',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.staff));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             statusCommand: {
                 command: 'status',
                 rank: 'bouncer',
@@ -3446,7 +3697,20 @@ return str;
                     }
                 }
             },
-
+//--------------------------------------------------------------------------------------------------------------TESTING
+            subCommand: {
+                command: 'sub',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.sub));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             swapCommand: {
                 command: 'swap',
                 rank: 'mod',
@@ -3577,7 +3841,33 @@ return str;
                     }
                 }
             },
+//--------------------------------------------------------------------------------------------------------------TESTING
+            twitchCommand: {
+                command: 'twitch',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.twitch));
+                    }
+                }
+            },
 
+            twitchliveCommand: {
+                command: 'twitchlive',
+                rank: 'manager',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.twitchlive));
+                    }
+                }
+            },
+//--------------------------------------------------------------------------------------------------------------TESTING
             unbanCommand: {
                 command: 'unban',
                 rank: 'bouncer',
