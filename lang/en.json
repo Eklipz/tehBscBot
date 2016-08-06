@@ -345,7 +345,7 @@
 
 "rpsempty": "\/me [Guide: https://git.io/vKfj8 ] To play Rock Paper Scissors Lizard Spock, use !rps {Choice}",
 "rpserror": "\/me Invalid Choice, try again!",
-"rpsmsg1": "\/me chose %%BOT%%. ",
+"rpsmsg1": "\/me chose %%BOT%% | ",
 "rpsrock1": "Rock crushes Scissors!",
 "rpsrock2": "Rock crushes Lizard!",
 "rpspaper1": "Paper covers Rock!",

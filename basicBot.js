@@ -226,7 +226,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.1",
+        version: "4.20.2",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -3106,7 +3106,7 @@ return str;
                         var msg = chat.message;
                         var space = msg.indexOf(' ');
                         if (space === -1) {
-                            API.sendChat(basicBot.chat.rpslsempty);
+                            API.sendChat(basicBot.chat.rpsempty);
                             return false;
                         }
                         else {
