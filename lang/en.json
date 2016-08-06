@@ -343,7 +343,6 @@
 "roulettejoin": "@%%NAME%% joined the roulette! (!leave if you regret it)",
 "rouletteleave": "\/me @%%NAME%% left the roulette!",
 
-// ROCK PAPER SCISSORS
 "rpsempty": "\/me [Guide: https://git.io/vKfj8 ] To play Rock Paper Scissors Lizard Spock, use !rps {Choice}",
 "rpserror": "\/me Invalid Choice, try again!",
 "rpsmsg1": "\/me chose %%BOT%%. ",
