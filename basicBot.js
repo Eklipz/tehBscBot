@@ -22,6 +22,11 @@
 
     var kill = function () {
         clearInterval(basicBot.room.autodisableInterval);
+        clearInterval(basicBot.room.autodiscordInterval);
+        clearInterval(basicBot.room.autofavInterval);
+        clearInterval(basicBot.room.autolottoInterval);
+        clearInterval(basicBot.room.autorulesInterval);
+        clearInterval(basicBot.room.autotwitchInterval);
         clearInterval(basicBot.room.afkInterval);
         basicBot.status = false;
     };
@@ -226,7 +231,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.7",
+        version: "4.20.8",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -309,7 +314,7 @@ return str;
         },
         room: {
             name: null,
-        chatMessages: [], 
+            chatMessages: [], 
             users: [],
             afkList: [],
             mutedUsers: [],
@@ -325,6 +330,36 @@ return str;
                 if (basicBot.status && basicBot.settings.autodisable) {
                     API.sendChat('!afkdisable');
                     API.sendChat('!joindisable');
+                }
+            },
+            autofavInterval: null,
+            autofavFunc: function () {
+                if (basicBot.status && basicBot.settings.autofav) {
+                    API.sendChat('!fav');
+                }
+            },
+            autodiscordInterval: null,
+            autodiscordFunc: function () {
+                if (basicBot.status && basicBot.settings.autodiscord) {
+                    API.sendChat('!discord');
+                }
+            },
+            autolottoInterval: null,
+            autodisableFunc: function () {
+                if (basicBot.status && basicBot.settings.autolotto) {
+                    API.sendChat('!lotto');
+                }
+            },
+            autorulesInterval: null,
+            autorulesFunc: function () {
+                if (basicBot.status && basicBot.settings.autorules) {
+                    API.sendChat('!rules');
+                }
+            },
+            autotwitchInterval: null,
+            autotwitchFunc: function () {
+                if (basicBot.status && basicBot.settings.autotwitch) {
+                    API.sendChat('!twitchlive');
                 }
             },
             queueing: 0,
@@ -1409,42 +1444,23 @@ return str;
             }, 10 * 1000);
             basicBot.room.autodisableInterval = setInterval(function () {
                 basicBot.room.autodisableFunc();
-            }, 60 * 60 * 1000);
+            }, 1000 * 60 * 60);
 // -------------------------------------------------------------------------------------------------------> TESTING
-            setInterval(function () {
-                if(basicBot.settings.autolotto === true) {
-                    API.sendChat("!lotto");
-                }
-            },
-            1000 * 60 * 58);
-
-            setInterval(function () {
-                if(basicBot.settings.autofav === true) {
-                    API.sendChat("!fav");
-                }
-            },
-            1000 * 60 * 67);
-                    
-            setInterval(function () {
-                if(basicBot.settings.autorules === true) {
-                    API.sendChat("!rules");
-                }
-            },
-            1000 * 60 * 78);
-
-            setInterval(function () {
-                if(basicBot.settings.autodiscord === true) {
-                    API.sendChat("!discord");
-                }
-            },
-            1000 * 60 * 87);
-
-            setInterval(function () {
-                if(basicBot.settings.autotwitch === true) {
-                    API.sendChat("!twitchlive");
-                }
-            },
-            1000 * 60 * 15);
+            basicBot.room.autodiscordInterval = setInterval(function () {
+                basicBot.room.autodiscordFunc();
+            }, 1000 * 60 * 87);
+            basicBot.room.autofavInterval = setInterval(function () {
+                basicBot.room.autofavFunc();
+            }, 1000 * 60 * 67);
+            basicBot.room.autolottoInterval = setInterval(function () {
+                basicBot.room.autolottoFunc();
+            }, 1000 * 60 * 58);
+            basicBot.room.autorulesInterval = setInterval(function () {
+                basicBot.room.autorulesFunc();
+            }, 1000 * 60 * 78);
+            basicBot.room.autotwitchInterval = setInterval(function () {
+                basicBot.room.autotwitchFunc();
+            }, 1000 * 60 * 15);
 //-------------------------------------------------------------------------------------------------------> TESTING
             basicBot.loggedInID = API.getUser().id;
             basicBot.status = true;
@@ -1839,7 +1855,7 @@ return str;
                     }
                 }
             },
-//----------------------------------------------------------------------------------------------TESTING
+
             autosCommand: {
                 command: 'autos',
                 rank: 'bouncer',
@@ -1898,7 +1914,7 @@ return str;
                     }
                 }
             },
-//----------------------------------------------------------------------------------------------TESTING
+
             autoskipCommand: {
                 command: 'autoskip',
                 rank: 'mod',
@@ -3355,7 +3371,7 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING RENAME ALL ROULETTE TO LOTTO
+
             lottoCommand: {
                 command: 'lotto',
                 rank: 'manager',
@@ -3383,14 +3399,8 @@ return str;
                     }
                 }
             },
-//--------------------------------------------------------------------------------------------------------------TESTING
-            //-----------------------------------------
-            // Rock Paper Scissors Lizard Spock
-            // I'm sure there's an easier way to do
-            // this, but I'm still learning JS.
-            // - Eklipz(N8te)
-            //-----------------------------------------
-            rpslsCommand: {
+
+            rpsCommand: {
                 command: ['rps', 'rpsls'],
                 rank: 'user',
                 type: 'startsWith',
@@ -4028,6 +4038,27 @@ return str;
                             }
                         }
                         else API.sendChat(subChat(basicBot.chat.unmuterank, {name: chat.un}));
+                    }
+                }
+            },
+
+            uptimeCommand: {
+                command: 'uptime',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var from = chat.un;
+                        var msg = '[@' + from + '] ';
+
+                        var launchT = basicBot.room.roomstats.launchTime;
+                        var durationOnline = Date.now() - launchT;
+                        var since = basicBot.roomUtilities.msToStr(durationOnline);
+                        msg += subChat(basicBot.chat.activefor, {time: since});
+
+                        return API.sendChat(msg);
                     }
                 }
             },

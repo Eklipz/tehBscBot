@@ -13,13 +13,9 @@ Manager+
 |!add | @user | add user to the waitlist |
 |!afklimit | X | sets the maximum afk time |
 |!afkremoval | | toggles the afk check |
-|!autoappear | | make !appear be displayed on a timer |
-|!autodubtrack | | make !dubtrack be displayed on a timer |
 |!autofav | | make !fav be displayed on a timer |
-|!autoquestion | | make !question be displayed on a timer |
-|!autoroulette | | make !roulette be displayed on a timer |
+|!autolotto | | make !lotto be displayed on a timer |
 |!autorules | | make !rules be displayed on a timer |
-|!autoshuffle | | make !shuffle be displayed on a timer |
 |!autoskip | | skips songs automatically when they're done (use when the circles-bug happens) |
 |!autotwitch | | make !twitchlive be displayed on a timer (use when TehSmileys is livestreaming) |
 |!botname | (botname) | change the default bot name |
@@ -33,11 +29,11 @@ Manager+
 |!lockdown | | lock down the room: only staff can chat |
 |!locktimer | X | set the maximum time the waitlist can be locked if lockguard is enabled |
 |!logout | | logs out account bot is hosted on |
+|!lotto | | start the Lotto |
 |!maxlength | X | specify the maximum length a song can be when timeguard is enabled |
 |!move | @user (X) | moves user to position X on the waitlist, default is position 1 |
 |!refresh | | refreshes the browser of whoever runs the bot |
 |!remove | @user | remove user from the waitlist |
-|!roulette | | start a roulette |
 |!songstats | | toggle song statistics |
 |!unlock | | unlock the waitlist |
 |!usercmdcd | X | set the cooldown on commands by grey users |
@@ -54,9 +50,9 @@ Bouncer
 |!afkreset | @user | resets the afk time of user |
 |!afktime | @user | shows how long user has been afk |
 |!autodisable | | toggle the autodisable |
+|!autos | | displays the status of automated messages |
 |!ban | @user | bans user for 1 day |
 |!blacklist / !bl | blacklistname | add the song to the specified blacklist |
-|!bleepbloop | (@user) | the trolliest command ever |
 |!blinfo | | get information required to blacklist a song |
 |!cycleguard | | toggles the cycleguard |
 |!dclookup / !dc | (@user) | do dclookup for user |
@@ -83,6 +79,7 @@ Bouncer
 |!togglevoteskip | | toggle the voteskip |
 |!unban | @user | unban user |
 |!unmute | | unmute user |
+|!uptime | | displays the bot uptime |
 |!voteratio | @user | display the vote statistic for a user |
 |!whois | @user | returns plug related information about user |
 
@@ -103,18 +100,15 @@ User
 |!8ball | (message) | ask the bot a question, the bot will return random variations of a yes or no answer |
 |!abuse | | explains how to use the !dc command properly, rather than abusing it |
 |!acronym | | 6 random letters will be made, try to make an acronym out of them |
-|!allbotstuff | | a link to everything to do with the bot |
-|!appear | | link to our appear.in room, come chat and show your face if you like |
-|!autowoot | | links to PlugCubed, the advised script/plugin to use for autowooting |
+|!autowoot | | links to RCS, the advised script/plugin to use for autowooting |
 |!ba | | explains the Brand Ambassador rank |
 |!candy | (@user) | give a random candy to a user |
 |!commands | | gives a link to the commands |
 |!cookie | (@user) | give a cookie to someone |
+|!cycleinfo | | explains what the djcycle setting does |
 |!dcinfo | | information about the dc command |
 |!dclookup / !dc | | use dclookup on yourself |
 |!discord | | links to our discord room where you can come and talk to us |
-|!djcycleinfo | | explains what the djcycle setting does |
-|!dubtrack | | check out our other room on dubtrack.fm so you can still jam with us when plug is down |
 |!emoji | | a link to a list with emoji's |
 |!eta | | shows how long before you reach the booth |
 |!fav | | remind people to favorite the room |
@@ -123,30 +117,25 @@ User
 |!ghostbuster | @user | checks if user is ghosting |
 |!gif | (message) | returns a gif (from giphy) related to the tag provided, Returns a random gif if no tags are provided |
 |!guidelines | | sends the list for what is expected of a staff member in this community |
-|!help | | links to an image to help get people started on plug **NOT AVAILABLE FOR THE MOMENT**|
-|!illuminati | | plug.dj is illuminati confirmed! |
-|!join | | join the roulette if it's up |
-|!leave | | leave the roulette if you joined |
+|!join | | join the Lotto if it's up |
+|!leave | | leave the Lotto if you joined |
 |!link | | when the user is the DJ, give a link to the current song |
+|!lottoinfo | | explains the Lotto to people who don't know what it is |
 |!op | | links to the OverPlayed list |
 |!ping | | pong! |
 |!props | | give a song "props" made to show appreciation to a good song |
-|!question | | link to our weekly question that gives you input towards changing our community |
 |!ref | | the "I.T" support command for plug.dj |
-|!rouletteinfo | | explains the roulette to people who don't know what it is |
 |!rps | [Choice] | play rock, paper, scissors, lizard, spock |
 |!rules | | links to the rules |
 |!shots | (@user) | give someone a shot |
 |!staff | | small things that will improve your chances of getting staff in our community |
-|!shuffle | | show the meaning of Monday and Friday |
-|!steam | | a link to our plugdj steam community so you can come game with us |
 |!theme | | links to the room's theme |
-|!twitch | | "TehSmileys" twitch link |
+|!twitch | | TehSmileys twitch link |
 |!twitchlive | | "TehSmileys" twitch link when she is live |
 |!weed | (@user) | give someone weed |
 |!website | | links to the room's website (not set in settings) |
 |!subinfo | | explain what the plug.dj subscription service means |
-|!youtube | | links to the room's youtube page (not set in settings) |
+|!youtube | | links to TehSmileys youtube page |
 
 
 All Sub-Commands
