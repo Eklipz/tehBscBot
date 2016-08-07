@@ -231,7 +231,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.8",
+        version: "4.20.9",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -296,8 +296,8 @@ return str;
             filterChat: true,
             etaRestriction: false,
             welcome: true,
-            opLink: "https://github.com/Eklipz/tehBscBot/blob/master/BLACKLIST.md",
-            rulesLink: "https://github.com/Eklipz/tehBscBot/blob/master/RULES.md",
+            opLink: "https://git.io/v636X",
+            rulesLink: "https://git.io/v6ezI",
             themeLink: null,
             fbLink: null,
             youtubeLink: "https://www.youtube.com/c/tehsmileys",

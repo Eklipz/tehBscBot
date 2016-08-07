@@ -131,7 +131,7 @@ User
 |!staff | | small things that will improve your chances of getting staff in our community |
 |!theme | | links to the room's theme |
 |!twitch | | TehSmileys twitch link |
-|!twitchlive | | "TehSmileys" twitch link when she is live |
+|!twitchlive | | TehSmileys twitch link when she is live |
 |!weed | (@user) | give someone weed |
 |!website | | links to the room's website (not set in settings) |
 |!subinfo | | explain what the plug.dj subscription service means |
