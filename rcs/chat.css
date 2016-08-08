@@ -1,0 +1,19 @@
+#chat-messages .fromID-5141948 .badge-box i,
+#chat-messages .id-5141948 .badge-box i {
+    background-image: url(http://eklipztv.com/dj/queensmiley.png);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.fromID-5141948 .msg .from .un:after,
+.id-5141948 .msg .from .un:after,
+/*#chat :not(.rsshit).id-5141948 .from:before*/ {
+    content: " "url("http://eklipztv.com/dj/robot.png") !important;
+    top: 3px;
+    position: relative;
+}
