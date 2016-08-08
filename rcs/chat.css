@@ -1,6 +1,6 @@
 #chat-messages .fromID-5141948 .badge-box i,
 #chat-messages .id-5141948 .badge-box i {
-    background-image: url(http://eklipztv.com/dj/queensmiley.png) !important;
+    background-image: url("http://eklipztv.com/dj/queensmiley.png") !important;
     background-size: cover;
     width: 30px;
     height: 30px;
