@@ -102,6 +102,18 @@ body {
     border-bottom: 1px solid #FF3558 !important;
 }
 
+.group.host .icon-chat-host {
+    background-image: url('http://eklipztv.com/dj/cohost.png');
+}
+
+.group.host .icon-chat-bouncer {
+    background-image: url('http://eklipztv.com/dj/bouncer.png');
+}
+
+.group.host .icon-chat-dj {
+    background-image: url('http://eklipztv.com/dj/residentdj.png');
+}
+
 .dialog.destructive .button.submit {
 }
 
