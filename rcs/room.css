@@ -103,15 +103,15 @@ body {
 }
 
 .group.host .icon-chat-host {
-    background-image: url('http://eklipztv.com/dj/cohost.png');
+    background-image: url('http://eklipztv.com/dj/cohost.png') !important;
 }
 
 .group.host .icon-chat-bouncer {
-    background-image: url('http://eklipztv.com/dj/bouncer.png');
+    background-image: url('http://eklipztv.com/dj/bouncer.png') !important;
 }
 
 .group.host .icon-chat-dj {
-    background-image: url('http://eklipztv.com/dj/residentdj.png');
+    background-image: url('http://eklipztv.com/dj/residentdj.png') !important;
 }
 
 .dialog.destructive .button.submit {
