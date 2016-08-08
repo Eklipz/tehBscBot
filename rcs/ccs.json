@@ -1,0 +1,46 @@
+{
+    "room":                     "TehSmileys Music Lounge",
+    "author":                   "N8te420",
+    "icon":                     "http://eklipztv.com/dj/logo.png",
+    "css":                      "http://eklipztv.com/dj/room.css",
+    "rules": {
+        "allowAutorespond":     false,
+        "allowAutowoot":        true,
+        "allowAutojoin":        false,
+        "allowAutograb":        true,
+        "allowSmartVote":       true,
+        "allowEmotes":          true,
+        "allowShowingMehs":     true,
+        "forceSmartVote":       false
+    },
+    "ccc": {
+        "admin":                "#f13b2f",
+        "ambassador":           "#84b423",
+        "host":                 "#ff00fc",
+        "cohost":               "#a350f3",
+        "manager":              "#3ebe5f",
+        "bouncer":              "#f37550",
+        "rdj":                  "#57afee",
+        "subscriber":           "#A1A6B3",
+        "silversubscriber":     "#A1A6B3",
+        "friend":               "#B35D88",
+        "user":                 "#8B92A3"
+    },
+    "images": {
+        "background":           "http://eklipztv.com/dj/smileysLounge.gif",
+        "playback":             null,
+        "admin":                "http://eklipztv.com/dj/admin.png",
+        "ambassador":           "http://eklipztv.com/dj/ambassador.png",
+        "host":                 "http://eklipztv.com/dj/host.png",
+        "cohost":               "http://eklipztv.com/dj/cohost.png",
+        "manager":              "http://eklipztv.com/dj/manager.png",
+        "bouncer":              "http://eklipztv.com/dj/bouncer.png",
+        "rdj":                  "http://eklipztv.com/dj/residentdj.png",
+        "subscriber":           null,
+        "silversubscriber":     null
+    },
+    "autocomplete": [],
+    "emotes": {
+        "custom_test": "https://cdn.radiant.dj/rcs/icons/test_custom.png"
+    }
+}
