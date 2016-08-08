@@ -1,7 +1,7 @@
 {
     "room":                     "TehSmileys Music Lounge",
     "author":                   "N8te420",
-    "icon":                     "http://eklipztv.com/dj/logo.png",
+    "icon":                     "http://eklipztv.com/dj/logo2.png",
     "css":                      "https://raw.githubusercontent.com/Eklipz/tehBscBot/master/rcs/room.css",
     "rules": {
         "allowAutorespond":     false,
