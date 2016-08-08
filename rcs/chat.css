@@ -11,8 +11,7 @@
 }
 
 .fromID-5141948 .msg .from .un:after,
-.id-5141948 .msg .from .un:after,
-/*#chat :not(.rsshit).id-5141948 .from:before*/ {
+.id-5141948 .msg .from .un:after {
     content: " "url("http://eklipztv.com/dj/robot.png") !important;
     top: 3px;
     position: relative;
