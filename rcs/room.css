@@ -1,10 +1,8 @@
 body {
     background-size: 100% auto !important;
     background-attachment: fixed 0px 0px !important;
-}
-
-#room-bar .icon-room {
-    background: url(http://eklipztv.com/dj/logo2.png);
+    width: 500% !important;
+    height: 500% !important;
 }
 
 #playback-container {
