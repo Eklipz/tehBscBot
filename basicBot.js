@@ -25,6 +25,7 @@
         clearInterval(basicBot.room.autodiscordInterval);
         clearInterval(basicBot.room.autofavInterval);
         clearInterval(basicBot.room.autolottoInterval);
+        clearInterval(basicBot.room.autorcsInterval);
         clearInterval(basicBot.room.autorulesInterval);
         clearInterval(basicBot.room.autotwitchInterval);
         clearInterval(basicBot.room.afkInterval);
@@ -231,7 +232,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.9",
+        version: "4.20.1",
         status: false,
         name: "nullBot",
         loggedInID: null,
@@ -256,7 +257,7 @@ return str;
             smartSkip: true, 
             cmdDeletion: true,
             maximumAfk: 120,
-            afkRemoval: true,
+            afkRemoval: false,
             maximumDc: 60,
             bouncerPlus: true,
             blacklistEnabled: true,
@@ -274,6 +275,7 @@ return str;
             autodiscord: true,
             autofav: true,
             autolotto: false,
+            autorcs: true,
             autorules: true,
             autotwitch: false,
             commandCooldown: 30,
@@ -348,6 +350,12 @@ return str;
             autodisableFunc: function () {
                 if (basicBot.status && basicBot.settings.autolotto) {
                     API.sendChat('!lotto');
+                }
+            },
+            autorcsInterval: null,
+            autorcsFunc: function () {
+                if (basicBot.status && basicBot.settings.autorcs) {
+                    API.sendChat('!rcs');
                 }
             },
             autorulesInterval: null,
@@ -1445,23 +1453,24 @@ return str;
             basicBot.room.autodisableInterval = setInterval(function () {
                 basicBot.room.autodisableFunc();
             }, 1000 * 60 * 60);
-// -------------------------------------------------------------------------------------------------------> TESTING
             basicBot.room.autodiscordInterval = setInterval(function () {
                 basicBot.room.autodiscordFunc();
-            }, 1000 * 60 * 87);
+            }, 1000 * 60 * 67);
             basicBot.room.autofavInterval = setInterval(function () {
                 basicBot.room.autofavFunc();
-            }, 1000 * 60 * 67);
+            }, 1000 * 60 * 77);
             basicBot.room.autolottoInterval = setInterval(function () {
                 basicBot.room.autolottoFunc();
             }, 1000 * 60 * 58);
+            basicBot.room.autorcsInterval = setInterval(function () {
+                basicBot.room.autorcsFunc();
+            }, 1000 * 60 * 64);
             basicBot.room.autorulesInterval = setInterval(function () {
                 basicBot.room.autorulesFunc();
-            }, 1000 * 60 * 78);
+            }, 1000 * 60 * 74);
             basicBot.room.autotwitchInterval = setInterval(function () {
                 basicBot.room.autotwitchFunc();
             }, 1000 * 60 * 15);
-//-------------------------------------------------------------------------------------------------------> TESTING
             basicBot.loggedInID = API.getUser().id;
             basicBot.status = true;
             API.sendChat('/cap ' + basicBot.settings.startupCap);
@@ -1814,6 +1823,27 @@ return str;
                 }
             },
 
+            autorcsCommand: {
+                command: 'autorcs',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.autorcs) {
+                            basicBot.settings.autorcs = !basicBot.settings.autorcs;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autorcs}));
+                        }
+                        else {
+                            basicBot.settings.autorcs = !basicBot.settings.autorcs;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autorcs}));
+                        }
+
+                    }
+                }
+            },
+
             autorulesCommand: {
                 command: 'autorules',
                 rank: 'bouncer',
@@ -1884,6 +1914,11 @@ return str;
 
                         msg += basicBot.chat.autolotto + ': ';
                         if (basicBot.settings.autolotto) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.autorcs + ': ';
+                        if (basicBot.settings.autorcs) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
 
@@ -3396,6 +3431,20 @@ return str;
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         return API.sendChat(subChat(basicBot.chat.lottoinfo));
+                    }
+                }
+            },
+
+            rcsCommand: {
+                command: 'rcs',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (typeof basicBot.settings.rulesLink === "string")
+                            return API.sendChat(subChat(basicBot.chat.rcsinfo));
                     }
                 }
             },

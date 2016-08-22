@@ -345,6 +345,7 @@
 "oplist": "\/me OP list: %%LINK%%",
 "permissionownsong": "\/me :up: @%%NAME%% has permission to play their own production!",
 "pong": "\/me Pong!",
+"rcsinfo": "\/me To view the room's custom theme, autowoot, and more, install the RCS extension here: https:\/\/rcs.radiant.dj\/",
 "ref": "/me Having a problem or issue with plug.dj? Try refreshing =)",
 "reload": "\/me Be right back.",
 "removenotinwl": "\/me [@%%NAME%%] Specified user @%%USERNAME%% is not in the waitlist.",

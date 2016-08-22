@@ -13,9 +13,10 @@ Manager+
 |!add | @user | add user to the waitlist |
 |!afklimit | X | sets the maximum afk time |
 |!afkremoval | | toggles the afk check |
-|!autofav | | make !fav be displayed on a timer |
-|!autolotto | | make !lotto be displayed on a timer |
-|!autorules | | make !rules be displayed on a timer |
+|!autofav | | make !fav display on a timer |
+|!autolotto | | make !lotto display on a timer |
+|!autorcs | | make !rcs display on a timer |
+|!autorules | | make !rules display on a timer |
 |!autoskip | | skips songs automatically when they're done (use when the circles-bug happens) |
 |!autotwitch | | make !twitchlive be displayed on a timer (use when TehSmileys is livestreaming) |
 |!botname | (botname) | change the default bot name |
@@ -124,6 +125,7 @@ User
 |!op | | links to the OverPlayed list |
 |!ping | | pong! |
 |!props | | give a song "props" made to show appreciation to a good song |
+|!rcs | | provides information for the RCS Extension |
 |!ref | | the "I.T" support command for plug.dj |
 |!rps | [Choice] | play rock, paper, scissors, lizard, spock |
 |!rules | | links to the rules |
@@ -154,4 +156,8 @@ Coming Soon... Hop3fully
 
 |Command | Description | Estimated Time |
 |:------:|:---------:|:---------------:|:-----------------------:|
+|!flip | | flips a coin |
+|!poll | | starts a poll for users to vote on |
+|!urban | | urban dictionary integration |
+|!streamalert | | automatically alert when streamer goes live |
 |idk|why not suggest something!||
