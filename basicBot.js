@@ -32,41 +32,6 @@
         basicBot.status = false;
     };
 
-var socket = function () {
-function loadSocket() {
-SockJS.prototype.msg = function(a){this.send(JSON.stringify(a))};
-sock = new SockJS('https://benzi.io:4964/socket');
-sock.onopen = function() {
-console.log('Connected to socket!');
-sendToSocket();
-};
-sock.onclose = function() {
-console.log('Disconnected from socket, reconnecting every minute ..');
-var reconnect = setTimeout(function(){ loadSocket() }, 60 * 1000);
-};
-sock.onmessage = function(broadcast) {
-var rawBroadcast = broadcast.data;
-var broadcastMessage = rawBroadcast.replace(/["\\]+/g, '');
-API.chatLog(broadcastMessage);
-console.log(broadcastMessage);
-};
-}
-if (typeof SockJS == 'undefined') {
-$.getScript('https://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js', loadSocket);
-} else loadSocket();
-}
-
-var sendToSocket = function () {
-var basicBotSettings = basicBot.settings;
-var basicBotRoom = basicBot.room;
-var basicBotInfo = {
-time: Date.now(),
-version: basicBot.version
-};
-var data = {users:API.getUsers(),userinfo:API.getUser(),room:location.pathname,basicBotSettings:basicBotSettings,basicBotRoom:basicBotRoom,basicBotInfo:basicBotInfo};
-return sock.msg(data);
-};
-
     var storeToStorage = function () {
         localStorage.setItem("basicBotsettings", JSON.stringify(basicBot.settings));
         localStorage.setItem("basicBotRoom", JSON.stringify(basicBot.room));
@@ -232,9 +197,9 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.1",
+        version: "4.20.5",
         status: false,
-        name: "nullBot",
+        name: "basicBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/Eklipz/tehBscBot/master/basicBot.js",
         cmdLink: "https://git.io/v6euA",
@@ -244,7 +209,7 @@ return str;
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "nullBot",
+            botName: "basicBot",
             language: "english",
             chatLink: "https://rawgit.com/Eklipz/tehBscBot/master/lang/en.json",
             scriptLink: "https://rawgit.com/Eklipz/tehBscBot/master/basicBot.js",
@@ -302,8 +267,8 @@ return str;
             rulesLink: "https://git.io/v6ezI",
             themeLink: null,
             fbLink: null,
-            youtubeLink: "https://www.youtube.com/c/tehsmileys",
-            website: "https://www.twitch.tv/tehsmileys",
+            youtubeLink: null,
+            website: null,
             intervalMessages: [],
             messageInterval: 5,
             songstats: false,
@@ -982,35 +947,46 @@ return str;
             $("#woot").click(); // autowoot
         }
 
-            var user = basicBot.userUtilities.lookupUser(obj.dj.id)
-            for(var i = 0; i < basicBot.room.users.length; i++){
-                if(basicBot.room.users[i].id === user.id){
-                    basicBot.room.users[i].lastDC = {
-                        time: null,
-                        position: null,
-                        songCount: 0
-                    };
+            if (obj['dj']) {
+                var user = basicBot.userUtilities.lookupUser(obj.dj.id)
+                for(var i = 0; i < basicBot.room.users.length; i++){
+                    if(basicBot.room.users[i].id === user.id){
+                        basicBot.room.users[i].lastDC = {
+                            time: null,
+                            position: null,
+                           songCount: 0
+                        };
+                    }
                 }
             }
 
             var lastplay = obj.lastPlay;
             if (typeof lastplay === 'undefined') return;
-            if (basicBot.settings.songstats) {
-                if (typeof basicBot.chat.songstatistics === "undefined") {
-                    API.sendChat("/me " + lastplay.media.author + " - " + lastplay.media.title + ": " + lastplay.score.positive + "W/" + lastplay.score.grabs + "G/" + lastplay.score.negative + "M.")
+            if (typeof lastplay !== 'undefined') {
+                if (basicBot.settings.songstats) {
+                    if (typeof basicBot.chat.songstatistics === "undefined") {
+                        API.sendChat("/me " + lastplay.media.author + " - " + lastplay.media.title + ": " + lastplay.score.positive + "W/" + lastplay.score.grabs + "G/" + lastplay.score.negative + "M.")
+                    }
+                    else {
+                         API.sendChat(subChat(basicBot.chat.songstatistics, {artist: lastplay.media.author, title: lastplay.media.title, woots: lastplay.score.positive, grabs: lastplay.score.grabs, mehs: lastplay.score.negative}))
+                    }
                 }
-                else {
-                    API.sendChat(subChat(basicBot.chat.songstatistics, {artist: lastplay.media.author, title: lastplay.media.title, woots: lastplay.score.positive, grabs: lastplay.score.grabs, mehs: lastplay.score.negative}))
-                }
+                basicBot.room.roomstats.totalWoots += lastplay.score.positive;
+                basicBot.room.roomstats.totalMehs += lastplay.score.negative;
+                basicBot.room.roomstats.totalCurates += lastplay.score.grabs;
             }
-            basicBot.room.roomstats.totalWoots += lastplay.score.positive;
-            basicBot.room.roomstats.totalMehs += lastplay.score.negative;
-            basicBot.room.roomstats.totalCurates += lastplay.score.grabs;
             basicBot.room.roomstats.songCount++;
             basicBot.roomUtilities.intervalMessage();
-            basicBot.room.currentDJID = obj.dj.id;
+            
+            if (obj['dj']) {
+                basicBot.room.currentDJID = obj.dj.id;
+            }
+            else {
+                basicBot.room.currentDJID = -1;
+            }
 
             var blacklistSkip = setTimeout(function () { 
+                if (!obj['media']) return;
                 var mid = obj.media.format + ':' + obj.media.cid;
                 for (var bl in basicBot.room.blacklists) {
                     if (basicBot.settings.blacklistEnabled) {
@@ -1113,7 +1089,6 @@ return str;
                 }, remaining + 5000);
             }
             storeToStorage();
-            sendToSocket(); 
         },
         eventWaitlistupdate: function (users) {
             if (users.length < 50) {
@@ -1494,7 +1469,6 @@ return str;
             }
             API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
             API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
-            socket(); 
             loadChat(API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version})));
         },
         commands: {
@@ -2807,14 +2781,13 @@ return str;
 
             killCommand: {
                 command: 'kill',
-                rank: 'bouncer',
+                rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         storeToStorage();
-                        sendToSocket(); 
                         API.sendChat(basicBot.chat.kill);
                         basicBot.disconnectAPI();
                         setTimeout(function () {
@@ -3325,7 +3298,6 @@ return str;
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        sendToSocket(); 
                         storeToStorage();
                         basicBot.disconnectAPI();
                         setTimeout(function () {
@@ -3338,14 +3310,13 @@ return str;
 
             reloadCommand: {
                 command: 'reload',
-                rank: 'bouncer',
+                rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         API.sendChat(basicBot.chat.reload);
-                        sendToSocket(); 
                         storeToStorage();
                         basicBot.disconnectAPI();
                         kill();
