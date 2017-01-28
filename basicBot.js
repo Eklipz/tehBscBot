@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.5",
+        version: "4.20.6",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -262,7 +262,7 @@ return str;
             motd: "Temporary Message of the Day",
             filterChat: true,
             etaRestriction: false,
-            welcome: true,
+            welcome: false,
             opLink: "https://git.io/v636X",
             rulesLink: "https://git.io/v6ezI",
             themeLink: null,
