@@ -163,7 +163,7 @@
 "You will receive a fortune."
 ],
 "props": [
-"awwww fukin sick cunt",
+"it's lit fam",
 "this song = 11/10 IGN",
 "this track is amazing",
 "awesometastic play",
@@ -263,7 +263,7 @@
 "autorules": "autorules",
 "autotwitch": "autotwitch",
 "autowoot": "\/me We recommend RCS for autowooting and other fun features: https:\/\/rcs.radiant.dj\/",
-"ball": "\/me %%NAME%%'s question was: \"%%QUESTION%%\" and %%BOTNAME%%'s response is: \"%%RESPONSE%%\"",
+"ball": "\/me %%NAME%% asked \"%%QUESTION%%\" and my response is: \"%%RESPONSE%%\"",
 "blacklist": "blacklist",
 "blinfo": "[@%%NAME%%] Blacklist Info - author: %%AUTHOR%%, title: %%TITLE%%, mid: %%SONGID%%",
 "botnameset": "\/me Bot name now set to: %%BOTNAME%%",
