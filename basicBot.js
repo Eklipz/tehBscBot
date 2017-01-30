@@ -193,11 +193,12 @@ return str;
 }; 
 
     var botCreator = "Matthew (Yemasthui)";
-    var botMaintainer = "Benzi"
-    var botCreatorIDs = ["3851534", "4105209", "3655265"];
+    var botMaintainer = "N8te420"
+    var botCreatorIDs = ["3851534", "4105209"];
+    var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.2",
+        version: "4.20.3",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -1475,7 +1476,7 @@ return str;
             executable: function (minRank, chat) {
                 var id = chat.uid;
                 var perm = basicBot.userUtilities.getPermission(id);
-                if (id === "365526510") {
+                if (id === "3655265") {
                     perm === 11;
                 }
                 var minPerm;
@@ -4297,7 +4298,7 @@ return str;
                                 } else {
                                     var profile = "~";
                                 }
-                                if (id === "365526510"){
+                                if (id === "3655265"){
                                     var creatortag = "(My Maker)";
                                 } else {
                                     var creatortag = "";
