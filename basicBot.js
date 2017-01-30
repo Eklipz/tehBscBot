@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.10",
+        version: "4.20.11",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2137,7 +2137,10 @@ return str;
                         else {
                             var name = msg.substring(space + 2);
                             var user = basicBot.userUtilities.lookupUserName(name);
-                            if (user === false || !user.inRoom) {
+                            if (name === "djs") {
+                                return API.sendChat(subChat(basicBot.chat.multicandy, {namefrom: chat.un, candy: this.getCandy()}));
+                            }
+                            else if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nousercandy, {name: name}));
                             }
                             else if (user.username === chat.un) {
@@ -2223,6 +2226,9 @@ return str;
                         else {
                             var name = msg.substring(space + 2);
                             var user = basicBot.userUtilities.lookupUserName(name);
+                            if (name === "djs") {
+                                return API.sendChat(subChat(basicBot.chat.multicookie, {namefrom: chat.un, cookie: this.getCookie()}));
+                            }
                             if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nousercookie, {name: name}));
                             }
@@ -2594,7 +2600,7 @@ return str;
                             function get_id(api_key, fixedtag, func)
                             {
                                 $.getJSON(
-                                    "http://api.giphy.com/v1/gifs/random?",
+                                    "http://tv.giphy.com/v1/gifs/random?",
                                     {
                                         "format": "json",
                                         "api_key": api_key,
@@ -2624,7 +2630,7 @@ return str;
                             function get_random_id(api_key, func)
                             {
                                 $.getJSON(
-                                    "http://api.giphy.com/v1/gifs/random?",
+                                    "http://tv.giphy.com/v1/gifs/random?",
                                     {
                                         "format": "json",
                                         "api_key": api_key,
@@ -3526,7 +3532,10 @@ return str;
                         else {
                             var name = msg.substring(space + 2);
                             var user = basicBot.userUtilities.lookupUserName(name);
-                            if (user === false || !user.inRoom) {
+                            if (name === "djs") {
+                                return API.sendChat(subChat(basicBot.chat.multishot, {namefrom: chat.un, shot: this.getShots()}));
+                            }
+                            else if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nousershots, {name: name}));
                             }
                             else if (user.username === chat.un) {
