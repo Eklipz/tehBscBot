@@ -2609,7 +2609,7 @@ return str;
                                     },
                                     function(response)
                                     {
-                                        func(response.data.id);
+                                        func(response.data.url);
                                     }
                                     )
                             }
@@ -2620,7 +2620,7 @@ return str;
                             var commatag = tag.replace(/ /g,", ");
                             get_id(api_key, tag, function(id) {
                                 if (typeof id !== 'undefined') {
-                                    API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, id: id, tags: commatag}));
+                                    API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, url: url, tags: commatag}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, tags: commatag}));
                                 }
@@ -2638,7 +2638,7 @@ return str;
                                     },
                                     function(response)
                                     {
-                                        func(response.data.id);
+                                        func(response.data.url);
                                     }
                                     )
                             }
@@ -2646,7 +2646,7 @@ return str;
                             var rating = "r"; // R Rated gifs
                             get_random_id(api_key, function(id) {
                                 if (typeof id !== 'undefined') {
-                                    API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, id: id}));
+                                    API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, url: url}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un}));
                                 }
