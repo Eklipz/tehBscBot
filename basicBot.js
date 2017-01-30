@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.7",
+        version: "4.20.8",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -4096,6 +4096,20 @@ return str;
                 }
             },
 
+            versionCommand: {
+                command: 'version',
+                rank: 'manager',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (typeof basicBot.version === "string")
+                            API.sendChat(subChat(basicBot.chat.version, {version: basicBot.version, name: chat.un}));
+                    }
+                }
+            },
+
             voteratioCommand: {
                 command: 'voteratio',
                 rank: 'bouncer',
@@ -4193,15 +4207,15 @@ return str;
                         }
                         else {
                             var name = msg.substring(space + 2);
+                            if (name === "@djs") {
+                                return API.sendChat(subChat(basicBot.chat.multiweed, {namefrom: chat.un, weed: this.getWeeds()}));
+                            }
                             var user = basicBot.userUtilities.lookupUserName(name);
-                            if (user === false || !user.inRoom) {
+                            else if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nouserweed, {name: name}));
                             }
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfweed, {name: name}));
-                            }
-                            else if (name === "@djs") {
-                                return API.sendChat(subChat(basicBot.chat.multiweed, {namefrom: chat.un, weed: this.getWeeds()}));
                             }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.weed, {nameto: user.username, namefrom: chat.un, weed: this.getWeeds()}));

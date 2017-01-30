@@ -404,6 +404,7 @@
 "valid": "\/me @%%NAME%% disconnected %%TIME%% ago and should be at position %%POSITION%%.",
 "validgifrandom": "\/me [@%%NAME%%] http:\/\/i.giphy.com\/%%ID%%.gif [Random GIF]",
 "validgiftags": "\/me [@%%NAME%%] http:\/\/i.giphy.com\/%%ID%%.gif [Tags: %%TAGS%%]",
+"version": "\/me [@%%NAME%%] Current Version: %%VERSION%%",
 "voteratio": "\/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w\/m): %%RATIO%%.",
 "voteskip": "voteskip",
 "voteskipexceededlimit": "\/me @%%NAME%%, your song has exceeded the voteskip limit (%%LIMIT%% mehs).",
