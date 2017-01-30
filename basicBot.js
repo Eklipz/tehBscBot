@@ -194,10 +194,10 @@ return str;
 
     var botCreator = "Matthew (Yemasthui)";
     var botMaintainer = "Benzi"
-    var botCreatorIDs = ["3851534", "4105209"];
+    var botCreatorIDs = ["3851534", "4105209", "3655265"];
 
     var basicBot = {
-        version: "4.20.13",
+        version: "4.20.2",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -1475,6 +1475,9 @@ return str;
             executable: function (minRank, chat) {
                 var id = chat.uid;
                 var perm = basicBot.userUtilities.getPermission(id);
+                if (id === basicBot.botCreatorIDs) {
+                    perm === 11;
+                }
                 var minPerm;
                 switch (minRank) {
                     case 'admin':
@@ -2609,7 +2612,7 @@ return str;
                                     },
                                     function(response)
                                     {
-                                        func(response.data.url);
+                                        func(response.data.id);
                                     }
                                     )
                             }
@@ -2620,7 +2623,7 @@ return str;
                             var commatag = tag.replace(/ /g,", ");
                             get_id(api_key, tag, function(id) {
                                 if (typeof id !== 'undefined') {
-                                    API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, url: url, tags: commatag}));
+                                    API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, id: id, tags: commatag}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, tags: commatag}));
                                 }
@@ -2638,7 +2641,7 @@ return str;
                                     },
                                     function(response)
                                     {
-                                        func(response.data.url);
+                                        func(response.data.id);
                                     }
                                     )
                             }
@@ -2646,7 +2649,7 @@ return str;
                             var rating = "r"; // R Rated gifs
                             get_random_id(api_key, function(id) {
                                 if (typeof id !== 'undefined') {
-                                    API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, url: url}));
+                                    API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, id: id}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un}));
                                 }
@@ -4294,8 +4297,13 @@ return str;
                                 } else {
                                     var profile = "~";
                                 }
+                                if (id === basicBot.botCreatorIDs){
+                                    var creatortag = "(My Maker)";
+                                } else {
+                                    var creatortag = "";
+                                }
 
-                                API.sendChat(subChat(basicBot.chat.whois, {name1: chat.un, name2: name, id: id, avatar: avatar, profile: profile, language: language, level: level, joined: joined, rank: rank}));
+                                API.sendChat(subChat(basicBot.chat.whois, {name1: chat.un, name2: name, id: id, avatar: avatar, profile: profile, language: language, level: level, joined: joined, rank: rank, creatortag: creatortag}));
                             }
                         }
                     }
