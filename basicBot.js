@@ -4207,10 +4207,10 @@ return str;
                         }
                         else {
                             var name = msg.substring(space + 2);
-                            if (name === "@djs") {
+                            var user = basicBot.userUtilities.lookupUserName(name);
+                            if (name === "djs") {
                                 return API.sendChat(subChat(basicBot.chat.multiweed, {namefrom: chat.un, weed: this.getWeeds()}));
                             }
-                            var user = basicBot.userUtilities.lookupUserName(name);
                             else if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nouserweed, {name: name}));
                             }
