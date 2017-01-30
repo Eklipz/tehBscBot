@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.11",
+        version: "4.20.12",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2600,9 +2600,9 @@ return str;
                             function get_id(api_key, fixedtag, func)
                             {
                                 $.getJSON(
-                                    "http://tv.giphy.com/v1/gifs/random?",
+                                    "http://api.giphy.com/v1/gifs/random?",
                                     {
-                                        "format": "json",
+                                        "fmt": "json",
                                         "api_key": api_key,
                                         "rating": rating,
                                         "tag": fixedtag
@@ -2614,7 +2614,7 @@ return str;
                                     )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
-                            var rating = "pg-13"; // PG 13 gifs
+                            var rating = "r"; // PG 13 gifs
                             var tag = msg.substr(cmd.length + 1);
                             var fixedtag = tag.replace(/ /g,"+");
                             var commatag = tag.replace(/ /g,", ");
@@ -2630,9 +2630,9 @@ return str;
                             function get_random_id(api_key, func)
                             {
                                 $.getJSON(
-                                    "http://tv.giphy.com/v1/gifs/random?",
+                                    "http://api.giphy.com/v1/gifs/random?",
                                     {
-                                        "format": "json",
+                                        "fmt": "json",
                                         "api_key": api_key,
                                         "rating": rating
                                     },
@@ -2643,7 +2643,7 @@ return str;
                                     )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
-                            var rating = "pg-13"; // PG 13 gifs
+                            var rating = "r"; // PG 13 gifs
                             get_random_id(api_key, function(id) {
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, id: id}));
