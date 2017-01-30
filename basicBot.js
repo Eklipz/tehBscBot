@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "4.20.9",
+        version: "4.20.10",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2143,9 +2143,6 @@ return str;
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfcandy, {name: name}));
                             }
-                            else if (name === "@djs") {
-                                return API.sendChat(subChat(basicBot.chat.multicandy, {namefrom: chat.un, candy: this.getCandy()}));
-                            }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.candy, {nameto: user.username, namefrom: chat.un, candy: this.getCandy()}));
                             }
@@ -2231,9 +2228,6 @@ return str;
                             }
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfcookie, {name: name}));
-                            }
-                            else if (name === "@djs") {
-                                return API.sendChat(subChat(basicBot.chat.multicookie, {namefrom: chat.un, cookie: this.getCookie()}));
                             }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.cookie, {nameto: user.username, namefrom: chat.un, cookie: this.getCookie()}));
@@ -3537,9 +3531,6 @@ return str;
                             }
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfshots, {name: name}));
-                            }
-                            else if (name === "@djs") {
-                                return API.sendChat(subChat(basicBot.chat.multishot, {namefrom: chat.un, shot: this.getShots()}));
                             }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.shot, {nameto: user.username, namefrom: chat.un, shot: this.getShots()}));
