@@ -2143,6 +2143,9 @@ return str;
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfcandy, {name: name}));
                             }
+                            else if (name === "@djs") {
+                                return API.sendChat(subChat(basicBot.chat.multicandy, {namefrom: chat.un, candy: this.getCandy()}));
+                            }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.candy, {nameto: user.username, namefrom: chat.un, candy: this.getCandy()}));
                             }
@@ -2228,6 +2231,9 @@ return str;
                             }
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfcookie, {name: name}));
+                            }
+                            else if (name === "@djs") {
+                                return API.sendChat(subChat(basicBot.chat.multicookie, {namefrom: chat.un, cookie: this.getCookie()}));
                             }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.cookie, {nameto: user.username, namefrom: chat.un, cookie: this.getCookie()}));
@@ -2594,7 +2600,7 @@ return str;
                             function get_id(api_key, fixedtag, func)
                             {
                                 $.getJSON(
-                                    "https://tv.giphy.com/v1/gifs/random?",
+                                    "http://api.giphy.com/v1/gifs/random?",
                                     {
                                         "format": "json",
                                         "api_key": api_key,
@@ -2624,7 +2630,7 @@ return str;
                             function get_random_id(api_key, func)
                             {
                                 $.getJSON(
-                                    "https://tv.giphy.com/v1/gifs/random?",
+                                    "http://api.giphy.com/v1/gifs/random?",
                                     {
                                         "format": "json",
                                         "api_key": api_key,
@@ -2793,41 +2799,6 @@ return str;
                         setTimeout(function () {
                             kill();
                         }, 1000);
-                    }
-                }
-            },
-
-            k1ttCommand: {
-                command: 'k1tt',
-                rank: 'user',
-                type: 'startsWith',
-                getK1tt: function (chat) {
-                    var kitt = Math.floor(Math.random() * basicBot.chat.k1tts.length);
-                    return basicBot.chat.k1tts[kitt];
-                },
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var msg = chat.message;
-                        var space = msg.indexOf(' ');
-                        if (space === -1) {
-                            API.sendChat(basicBot.chat.eatk1tt);
-                            return false;
-                        }
-                        else {
-                            var name = msg.substring(space + 2);
-                            var user = basicBot.userUtilities.lookupUserName(name);
-                            if (user === false || !user.inRoom) {
-                                return API.sendChat(subChat(basicBot.chat.nouserk1tt, {name: name}));
-                            }
-                            else if (user.username === chat.un) {
-                                return API.sendChat(subChat(basicBot.chat.selfk1tt, {nameto: user.username, k1tt: this.getK1tt()}));
-                            }
-                            else {
-                                return API.sendChat(subChat(basicBot.chat.k1tt, {nameto: user.username, namefrom: chat.un, k1tt: this.getK1tt()}));
-                            }
-                        }
                     }
                 }
             },
@@ -3567,6 +3538,9 @@ return str;
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfshots, {name: name}));
                             }
+                            else if (name === "@djs") {
+                                return API.sendChat(subChat(basicBot.chat.multishot, {namefrom: chat.un, shot: this.getShots()}));
+                            }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.shot, {nameto: user.username, namefrom: chat.un, shot: this.getShots()}));
                             }
@@ -4225,6 +4199,9 @@ return str;
                             }
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfweed, {name: name}));
+                            }
+                            else if (name === "@djs") {
+                                return API.sendChat(subChat(basicBot.chat.multiweed, {namefrom: chat.un, weed: this.getWeeds()}));
                             }
                             else {
                                 return API.sendChat(subChat(basicBot.chat.weed, {nameto: user.username, namefrom: chat.un, weed: this.getWeeds()}));
