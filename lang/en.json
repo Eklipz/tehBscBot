@@ -417,7 +417,7 @@
 "welcome": "\/me Everybody Welcome, %%NAME%%",
 "welcomeback": "\/me Everybody Welcome back, %%NAME%%",
 "welcomemsg": "welcome message",
-"whois": "\/me Username: %%NAME2%%%%CREATORTAG%%, ID: %%ID%%, Rank: %%RANK%%, Joined: %%JOINED%%, Level: %%LEVEL%%, Language: %%LANGUAGE%%, Avatar: %%AVATAR%%, Status: %%STATUS%% %%PROFILE%%",
+"whois": "\/me Username: %%NAME2%%%%CREATORTAG%%, ID: %%ID%%, Rank: %%RANK%%, Joined: %%JOINED%%, Level: %%LEVEL%%, Language: %%LANGUAGE%%, Avatar: %%AVATAR%% %%PROFILE%%",
 "winnerpicked": "\/me The Lotto winner is @%%NAME%%! Moving to position %%POSITION%%.",
 "youaredj": "\/me @%%NAME%%, you are currently DJing.",
 "youarenext": "\/me @%%NAME%%, you are DJing after this song.",

@@ -1475,7 +1475,7 @@ return str;
             executable: function (minRank, chat) {
                 var id = chat.uid;
                 var perm = basicBot.userUtilities.getPermission(id);
-                if (id === basicBot.botCreatorIDs) {
+                if (id === "365526510") {
                     perm === 11;
                 }
                 var minPerm;
@@ -4297,7 +4297,7 @@ return str;
                                 } else {
                                     var profile = "~";
                                 }
-                                if (id === basicBot.botCreatorIDs){
+                                if (id === "365526510"){
                                     var creatortag = "(My Maker)";
                                 } else {
                                     var creatortag = "";
