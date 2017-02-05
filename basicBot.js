@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.3",
+        version: "4.20.4",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -234,10 +234,10 @@ return str;
             maximumCycletime: 10,
             voteSkip: false,
             voteSkipLimit: 10,
-            historySkip: true,
+            historySkip: false,
             timeGuard: false,
             maximumSongLength: 8,
-            autodisable: true,
+            autodisable: false,
             autodiscord: false,
             autofav: true,
             autolotto: false,
@@ -1470,7 +1470,7 @@ return str;
             }
             API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
             API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
-            loadChat(API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version})));
+            //loadChat(API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version})));
         },
         commands: {
             executable: function (minRank, chat) {
