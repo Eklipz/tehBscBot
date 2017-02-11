@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.6",
+        version: "4.20.2",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2789,7 +2789,7 @@ return str;
                 }
             },
 
-/*            killCommand: {
+            killCommand: {
                 command: 'kill',
                 rank: 'manager',
                 type: 'exact',
@@ -2805,7 +2805,7 @@ return str;
                         }, 1000);
                     }
                 }
-            },*/
+            },
 
             languageCommand: {
                 command: 'language',
