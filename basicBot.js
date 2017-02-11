@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.8",
+        version: "4.20.2",
         status: false,
         name: "basicBot",
         loggedInID: null,
