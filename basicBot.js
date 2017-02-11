@@ -2604,9 +2604,9 @@ return str;
                             function get_id(api_key, fixedtag, func)
                             {
                                 $.getJSON(
-                                    "https://api.giphy.com/v1/gifs/random?",
+                                    "https://tv.giphy.com/v1/gifs/random?",
                                     {
-                                        "fmt": "json",
+                                        "format": "json",
                                         "api_key": api_key,
                                         "rating": rating,
                                         "tag": fixedtag
@@ -2615,10 +2615,10 @@ return str;
                                     {
                                         func(response.data.id);
                                     }
-                                )
+                                    )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
-                            var rating = "r"; // R Rated gifs
+                            var rating = "pg-13"; // PG 13 gifs
                             var tag = msg.substr(cmd.length + 1);
                             var fixedtag = tag.replace(/ /g,"+");
                             var commatag = tag.replace(/ /g,", ");
@@ -2626,7 +2626,7 @@ return str;
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, id: id, tags: commatag}));
                                 } else {
-                                    API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, id: id, tags: commatag}));
+                                    API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, tags: commatag}));
                                 }
                             });
                         }
@@ -2634,9 +2634,9 @@ return str;
                             function get_random_id(api_key, func)
                             {
                                 $.getJSON(
-                                    "https://api.giphy.com/v1/gifs/random?",
+                                    "https://tv.giphy.com/v1/gifs/random?",
                                     {
-                                        "fmt": "json",
+                                        "format": "json",
                                         "api_key": api_key,
                                         "rating": rating
                                     },
@@ -2644,15 +2644,15 @@ return str;
                                     {
                                         func(response.data.id);
                                     }
-                                )
+                                    )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
-                            var rating = "r"; // R Rated gifs
+                            var rating = "pg-13"; // PG 13 gifs
                             get_random_id(api_key, function(id) {
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, id: id}));
                                 } else {
-                                    API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un, id: id}));
+                                    API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un}));
                                 }
                             });
                         }
