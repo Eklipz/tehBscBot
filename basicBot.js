@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.4",
+        version: "4.20.6",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2624,7 +2624,6 @@ return str;
                             var commatag = tag.replace(/ /g,", ");
                             get_id(api_key, tag, function(id) {
                                 if (typeof id !== 'undefined') {
-                                    API.sendChat(subChat(id));
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, id: id, tags: commatag}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, tags: commatag}));
@@ -2651,7 +2650,6 @@ return str;
                             var rating = "r"; // R Rated gifs
                             get_random_id(api_key, function(id) {
                                 if (typeof id !== 'undefined') {
-                                    API.sendChat(subChat(id));
                                     API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, id: id}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un}));
