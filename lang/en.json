@@ -404,7 +404,7 @@
 "valid": "\/me @%%NAME%% disconnected %%TIME%% ago and should be at position %%POSITION%%.",
 "validgifrandom": "\/me [@%%NAME%%] http:\/\/media3.giphy.com\/media\/%%ID%%\/giphy.gif [Random GIF]%%ID%%",
 "validgiftags": "\/me [@%%NAME%%] http:\/\/media3.giphy.com\/media\/%%ID%%\/giphy.gif [Tags: %%TAGS%%]%%ID%%",
-"version": "\/me [@%%NAME%%] Current Version: 4.20.2",
+"version": "\/me [@%%NAME%%] Current Version: 4.20.3.debug",
 "voteratio": "\/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w\/m): %%RATIO%%.",
 "voteskip": "voteskip",
 "voteskipexceededlimit": "\/me @%%NAME%%, your song has exceeded the voteskip limit (%%LIMIT%% mehs).",
@@ -422,7 +422,6 @@
 "youaredj": "\/me @%%NAME%%, you are currently DJing.",
 "youarenext": "\/me @%%NAME%%, you are DJing after this song.",
 "youtube": "\/me [%%NAME%%] Subscribe to us on youtube: %%LINK%%",
-
 
 
 

@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.2",
+        version: "4.20.3",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2601,12 +2601,11 @@ return str;
                     else {
                         var msg = chat.message;
                         if (msg.length !== cmd.length) {
-                            function get_id(api_key, fixedtag, func)
+                            function get_id(api_key, fixedtag, rating)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
                                     {
-                                        "fmt": "json",
                                         "api_key": api_key,
                                         "rating": rating,
                                         "tag": fixedtag
@@ -2631,12 +2630,11 @@ return str;
                             });
                         }
                         else {
-                            function get_random_id(api_key, func)
+                            function get_random_id(api_key, rating)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
                                     {
-                                        "fmt": "json",
                                         "api_key": api_key,
                                         "rating": rating
                                     },
