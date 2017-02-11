@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.3",
+        version: "4.20.4",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2601,7 +2601,7 @@ return str;
                     else {
                         var msg = chat.message;
                         if (msg.length !== cmd.length) {
-                            function get_id(api_key, fixedtag, rating)
+                            function get_id(api_key, fixedtag, rating, func)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
@@ -2625,12 +2625,12 @@ return str;
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, id: id, tags: commatag}));
                                 } else {
-                                    API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, tags: commatag}));
+                                    API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, id: id, tags: commatag}));
                                 }
                             });
                         }
                         else {
-                            function get_random_id(api_key, rating)
+                            function get_random_id(api_key, rating, func)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
@@ -2650,7 +2650,7 @@ return str;
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, id: id}));
                                 } else {
-                                    API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un}));
+                                    API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un, id: id}));
                                 }
                             });
                         }
