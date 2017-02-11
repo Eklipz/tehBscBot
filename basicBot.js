@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.4",
+        version: "4.20.5",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2601,11 +2601,12 @@ return str;
                     else {
                         var msg = chat.message;
                         if (msg.length !== cmd.length) {
-                            function get_id(api_key, fixedtag, rating, func)
+                            function get_id(api_key, fixedtag, func)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
                                     {
+                                        "fmt": "json",
                                         "api_key": api_key,
                                         "rating": rating,
                                         "tag": fixedtag
@@ -2614,7 +2615,7 @@ return str;
                                     {
                                         func(response.data.id);
                                     }
-                                    )
+                                )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
                             var rating = "r"; // R Rated gifs
@@ -2630,11 +2631,12 @@ return str;
                             });
                         }
                         else {
-                            function get_random_id(api_key, rating, func)
+                            function get_random_id(api_key, func)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
                                     {
+                                        "fmt": "json",
                                         "api_key": api_key,
                                         "rating": rating
                                     },
@@ -2642,7 +2644,7 @@ return str;
                                     {
                                         func(response.data.id);
                                     }
-                                    )
+                                )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
                             var rating = "r"; // R Rated gifs
