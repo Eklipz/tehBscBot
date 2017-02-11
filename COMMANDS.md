@@ -158,6 +158,7 @@ Coming Soon... Hop3fully
 |:------:|:---------:|:---------------:|:-----------------------:|
 |!flip | | flips a coin |
 |!poll | | starts a poll for users to vote on |
+|!props | Gifts the DJ for playing a nice track |
 |!urban | | urban dictionary integration |
 |!streamalert | | automatically alert when streamer goes live |
 |idk|why not suggest something!||

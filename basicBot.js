@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.4",
+        version: "4.20.6",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -246,6 +246,7 @@ return str;
             autotwitch: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
+            giftprops: true,
             skipPosition: 3,
             skipReasons: [
                 ["theme", "This song does not fit the room theme. "],
@@ -263,7 +264,7 @@ return str;
             motd: "Temporary Message of the Day",
             filterChat: true,
             etaRestriction: false,
-            welcome: false,
+            welcome: true,
             opLink: "https://git.io/v636X",
             rulesLink: "https://git.io/v6ezI",
             themeLink: null,
@@ -1452,7 +1453,7 @@ return str;
             API.sendChat('/cap ' + basicBot.settings.startupCap);
             API.setVolume(basicBot.settings.startupVolume);
             if (basicBot.settings.autowoot) { 
-            $("#woot").click();
+                $("#woot").click();
             }
             if (basicBot.settings.startupEmoji) {
                 var emojibuttonoff = $(".icon-emoji-off");
@@ -2604,7 +2605,7 @@ return str;
                             function get_id(api_key, fixedtag, func)
                             {
                                 $.getJSON(
-                                    "http://api.giphy.com/v1/gifs/random?",
+                                    "https://api.giphy.com/v1/gifs/random?",
                                     {
                                         "fmt": "json",
                                         "api_key": api_key,
@@ -2634,7 +2635,7 @@ return str;
                             function get_random_id(api_key, func)
                             {
                                 $.getJSON(
-                                    "http://api.giphy.com/v1/gifs/random?",
+                                    "https://api.giphy.com/v1/gifs/random?",
                                     {
                                         "fmt": "json",
                                         "api_key": api_key,
@@ -3235,9 +3236,9 @@ return str;
                             var user = basicBot.userUtilities.lookupUserName(name);
                             var dj = API.getDJ().username;
                             return API.sendChat(subChat(basicBot.chat.prop, {namefrom: chat.un, dj: dj, prop: this.getProps()}));
-                                }
-                            }
-                        },
+                        }
+                }
+            },
 
             pingCommand: {
                 command: 'ping',
