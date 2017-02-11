@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.7",
+        version: "4.20.2",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -246,7 +246,6 @@ return str;
             autotwitch: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
-            giftprops: true,
             skipPosition: 3,
             skipReasons: [
                 ["theme", "This song does not fit the room theme. "],
@@ -1453,7 +1452,7 @@ return str;
             API.sendChat('/cap ' + basicBot.settings.startupCap);
             API.setVolume(basicBot.settings.startupVolume);
             if (basicBot.settings.autowoot) { 
-                $("#woot").click();
+            $("#woot").click();
             }
             if (basicBot.settings.startupEmoji) {
                 var emojibuttonoff = $(".icon-emoji-off");
