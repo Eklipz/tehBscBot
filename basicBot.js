@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.5",
+        version: "4.20.6",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2613,7 +2613,7 @@ return str;
                                     },
                                     function(response)
                                     {
-                                        func(response.data.url);
+                                        func(response.data.image_url);
                                     }
                                     )
                             }
@@ -2642,7 +2642,7 @@ return str;
                                     },
                                     function(response)
                                     {
-                                        func(response.data.url);
+                                        func(response.data.image_url);
                                     }
                                     )
                             }
