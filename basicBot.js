@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.1",
+        version: "4.20.2",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2624,7 +2624,7 @@ return str;
                             var commatag = tag.replace(/ /g,", ");
                             get_url(api_key, tag, function(url) {
                                 if (typeof url !== 'undefined') {
-                                    API.sendChat('/me' + url);
+                                    API.sendChat(subChat(url));
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, url: url, tags: commatag}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, tags: commatag}));
@@ -2651,7 +2651,7 @@ return str;
                             var rating = "r"; // R Rated gifs
                             get_random_url(api_key, function(url) {
                                 if (typeof url !== 'undefined') {
-                                    API.sendChat('/me' + url);
+                                    API.sendChat(subChat(url));
                                     API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, url: url}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un}));
