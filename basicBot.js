@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.3",
+        version: "4.20.4",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2601,7 +2601,7 @@ return str;
                     else {
                         var msg = chat.message;
                         if (msg.length !== cmd.length) {
-                            function get_id(api_key, fixedtag, func)
+                            function get_url(api_key, fixedtag, func)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
@@ -2622,8 +2622,8 @@ return str;
                             var tag = msg.substr(cmd.length + 1);
                             var fixedtag = tag.replace(/ /g,"+");
                             var commatag = tag.replace(/ /g,", ");
-                            get_id(api_key, tag, function(id) {
-                                if (typeof id !== 'undefined') {
+                            get_url(api_key, tag, function(url) {
+                                if (typeof url !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {name: chat.un, url: url, tags: commatag}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgiftags, {name: chat.un, tags: commatag}));
@@ -2631,7 +2631,7 @@ return str;
                             });
                         }
                         else {
-                            function get_random_id(api_key, func)
+                            function get_random_url(api_key, func)
                             {
                                 $.getJSON(
                                     "https://api.giphy.com/v1/gifs/random?",
@@ -2648,8 +2648,8 @@ return str;
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
                             var rating = "r"; // R Rated gifs
-                            get_random_id(api_key, function(id) {
-                                if (typeof id !== 'undefined') {
+                            get_random_url(api_key, function(url) {
+                                if (typeof url !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, url: url}));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgifrandom, {name: chat.un}));
