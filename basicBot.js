@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.5",
+        version: "4.20.7",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -1992,7 +1992,8 @@ return str;
                             API.sendChat(subChat(basicBot.chat.ball, {name: chat.un, botname: basicBot.settings.botName, question: argument, response: basicBot.chat.balls[randomBall]}));
                      }
                 }
-            }, 
+            },
+
             banCommand: {
                 command: 'ban',
                 rank: 'bouncer',
@@ -2154,6 +2155,24 @@ return str;
                                 return API.sendChat(subChat(basicBot.chat.candy, {nameto: user.username, namefrom: chat.un, candy: this.getCandy()}));
                             }
                         }
+                    }
+                }
+            },
+
+            catfactCommand: {
+                command: 'catfact',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        request('http://catfacts-api.appspot.com/api/facts', function (error, response, body) {
+                            if(body != null) {
+                                randomFact = JSON.parse(body).facts[0];
+                                return API.sendChat(subChat(basicBot.chat.catfact, {fact: randomFact}));
+                            }
+                        });
                     }
                 }
             },
@@ -3349,6 +3368,22 @@ return str;
                             basicBot.settings.etaRestriction = !basicBot.settings.etaRestriction;
                             return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.etarestriction}));
                         }
+                    }
+                }
+            },
+
+            rollCommand: {
+                command: 'roll',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var maxValue = 12;
+                        var roll = Math.floor(Math.random() * 12) + 1;
+
+                        return API.sendChat(subChat(basicBot.chat.roll, {dice: roll, name: chat.un}));
                     }
                 }
             },

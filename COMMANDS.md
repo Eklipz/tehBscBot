@@ -104,6 +104,7 @@ User
 |!autowoot | | links to RCS, the advised script/plugin to use for autowooting |
 |!ba | | explains the Brand Ambassador rank |
 |!candy | (@user) | give a random candy to a user |
+|!catfact | | returns a random cat fact |
 |!commands | | gives a link to the commands |
 |!cookie | (@user) | give a cookie to someone |
 |!cycleinfo | | explains what the djcycle setting does |
@@ -127,6 +128,7 @@ User
 |!props | | give a song "props" made to show appreciation to a good song |
 |!rcs | | provides information for the RCS Extension |
 |!ref | | the "I.T" support command for plug.dj |
+|!roll | | rolls the dice |
 |!rps | [Choice] | play rock, paper, scissors, lizard, spock |
 |!rules | | links to the rules |
 |!shots | (@user) | give someone a shot |
