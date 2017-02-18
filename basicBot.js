@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.8",
+        version: "4.20.9",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2168,7 +2168,7 @@ return str;
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         function getfact(func) {
-                            $.getJSON("http://catfacts-api.appspot.com/api/facts", function(error, response, body) {
+                            $.getJSON("https://catfacts-api.appspot.com/api/facts", function(error, response, body) {
                                 func((body).facts[0]);
                             })
                         }
