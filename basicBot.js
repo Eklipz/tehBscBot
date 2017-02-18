@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.7",
+        version: "4.20.8",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -210,7 +210,7 @@ return str;
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
+            botName: "RoboTHC",
             language: "english",
             chatLink: "https://rawgit.com/Eklipz/tehBscBot/master/lang/en.json",
             scriptLink: "https://rawgit.com/Eklipz/tehBscBot/master/basicBot.js",
@@ -2167,12 +2167,14 @@ return str;
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        request('http://catfacts-api.appspot.com/api/facts', function (error, response, body) {
-                            if(body != null) {
-                                randomFact = JSON.parse(body).facts[0];
-                                return API.sendChat(subChat(basicBot.chat.catfact, {fact: randomFact}));
-                            }
-                        });
+                        function (data) {
+                            request('http://catfacts-api.appspot.com/api/facts', function (error, response, body) {
+                                if(body != null) {
+                                    var randomFact = JSON.parse(body).facts[0];
+                                    return API.sendChat(subChat(basicBot.chat.catfact, {fact: randomFact}));
+                                }
+                            });
+                        };
                     }
                 }
             },
