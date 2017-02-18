@@ -2167,14 +2167,16 @@ return str;
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        function (data) {
-                            request('http://catfacts-api.appspot.com/api/facts', function (error, response, body) {
-                                if(body != null) {
-                                    var randomFact = JSON.parse(body).facts[0];
-                                    return API.sendChat(subChat(basicBot.chat.catfact, {fact: randomFact}));
-                                }
-                            });
-                        };
+                        function getfact(func) {
+                            $.getJSON("http://catfacts-api.appspot.com/api/facts", function(error, response, body) {
+                                func((body).facts[0]);
+                            })
+                        }
+                        getfact(function(data) {
+                            if (body != null) {
+                                API.sendChat(subChat(basicBot.chat.catfact, {fact: data}));
+                            }
+                        });
                     }
                 }
             },
