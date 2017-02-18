@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.9",
+        version: "4.20.0",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2159,7 +2159,7 @@ return str;
                 }
             },
 
-            catfactCommand: {
+/*            catfactCommand: {
                 command: 'catfact',
                 rank: 'user',
                 type: 'exact',
@@ -2180,7 +2180,7 @@ return str;
                     }
                 }
             },
-
+*/
             clearchatCommand: {
                 command: 'clearchat',
                 rank: 'manager',

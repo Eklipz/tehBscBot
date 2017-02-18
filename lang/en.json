@@ -353,7 +353,7 @@
 "reload": "\/me Be right back.",
 "removenotinwl": "\/me [@%%NAME%%] Specified user @%%USERNAME%% is not in the waitlist.",
 "retrievingdata": "Retrieving previously stored data.",
-"roll": "\/me [@%%NAME%%] You rolled a %%DICE%% :game_die:",
+"roll": "\/me [@%%NAME%%] You rolled a %%DICE%% :game_die: :game_die:",
 "roomadvertising": "\/me @%%NAME%%, don't post links to other rooms please.",
 "roomrules": "\/me The room rules can be found here: %%LINK%%",
 "lottoinfo": "/me Lotto is run every 60 mins, do !join to join when it starts. If you win you get first on the waitlist!",
