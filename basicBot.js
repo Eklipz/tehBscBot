@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.2",
+        version: "4.20.3",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -3555,7 +3555,7 @@ return str;
             },
             
             shotsCommand: {
-                command: ['shots', 'shot'],
+                command: 'shots',
                 rank: 'user',
                 type: 'startsWith',
                 getShots: function (chat) {
@@ -4140,7 +4140,7 @@ return str;
             },
 
             versionCommand: {
-                command: ['version', 'ver'],
+                command: 'version',
                 rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
