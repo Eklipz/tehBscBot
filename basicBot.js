@@ -198,7 +198,7 @@ return str;
     var botMaintainerID = "3655265";
 
     var basicBot = {
-        version: "4.20.3",
+        version: "4.20.5",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -225,7 +225,7 @@ return str;
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
-            bouncerPlus: true,
+            bouncerPlus: false,
             blacklistEnabled: false,
             lockdownEnabled: false,
             lockGuard: false,
@@ -2219,7 +2219,7 @@ return str;
             },
 
             commandsCommand: {
-                command: 'commands',
+                command: ['commands', 'cmd'],
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3377,7 +3377,7 @@ return str;
             },
 
             rollCommand: {
-                command: 'roll',
+                command: ['roll', 'dice'],
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3555,7 +3555,7 @@ return str;
             },
             
             shotsCommand: {
-                command: 'shots',
+                command: ['shots', 'shot', 'drink'],
                 rank: 'user',
                 type: 'startsWith',
                 getShots: function (chat) {
@@ -4140,7 +4140,7 @@ return str;
             },
 
             versionCommand: {
-                command: 'version',
+                command: ['version', 'ver'],
                 rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
