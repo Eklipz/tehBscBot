@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209", "3655265"];
 
     var basicBot = {
-        version: "4.20.7",
+        version: "4.20.8",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2537,20 +2537,41 @@ return str;
                 command: ['flip', 'coin'],
                 rank: 'user',
                 type: 'exact',
+                var rand = function(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                };
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var val = "";
-                        var random = Math.random() * 100;
-                        if ((random -= 47) < 0) val = "Heads";
-                        if ((random -= 47) < 0) val = "Tails";
-                        if ((random -= 6) < 0) val = "The Side";
+                    else { 
+                        var generateWeighedList = function(list, weight) {
+                            var weighed_list = [];
+                             
+                            // Loop over weights
+                            for (var i = 0; i < weight.length; i++) {
+                                var multiples = weight[i] * 100;
+                                 
+                                // Loop over the list of items
+                                for (var j = 0; j < multiples; j++) {
+                                    weighed_list.push(list[i]);
+                                }
+                            }
+                             
+                            return weighed_list;
+                        };
+                         
+                        var list = ['Heads', 'Tails', 'On the Side'];
+                        var weight = [0.47, 0.47, 0.06];
+                        var weighed_list = generateWeighedList(list, weight);
+                         
+                        var random_num = rand(0, weighed_list.length-1);
 
+                        var val = weighed_list[random_num];
                         return API.sendChat(subChat(basicBot.chat.flip, {coin: val, name: chat.un}));
                     }
                 }
             },
+
             
             forceskipCommand: {
                 command: ['forceskip', 'fs'],
