@@ -2537,13 +2537,13 @@ return str;
                 command: ['flip', 'coin'],
                 rank: 'user',
                 type: 'exact',
-                var rand = function(min, max) {
-                    return Math.floor(Math.random() * (max - min + 1)) + min;
-                };
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else { 
+                    else {
+                        var rand = function(min, max) {
+                            return Math.floor(Math.random() * (max - min + 1)) + min;
+                        };
                         var generateWeighedList = function(list, weight) {
                             var weighed_list = [];
                              
