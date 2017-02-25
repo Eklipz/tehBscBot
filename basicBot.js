@@ -194,11 +194,10 @@ return str;
 
     var botCreator = "Matthew (Yemasthui)";
     var botMaintainer = "N8te420"
-    var botCreatorIDs = ["3851534", "4105209"];
-    var botMaintainerID = "3655265";
+    var botCreatorIDs = ["3851534", "4105209", "3655265"];
 
     var basicBot = {
-        version: "4.20.5",
+        version: "4.20.6",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -261,15 +260,16 @@ return str;
             motdEnabled: false,
             motdInterval: 5,
             motd: "Temporary Message of the Day",
-            filterChat: true,
+            filterChat: false,
             etaRestriction: false,
             welcome: true,
             opLink: "https://git.io/v636X",
             rulesLink: "https://git.io/v6ezI",
+            gitLink: "https://github.com/Eklipz/tehBscBot",
             themeLink: null,
             fbLink: null,
             youtubeLink: null,
-            website: null,
+            website: "http://diamondlife.xyz",
             intervalMessages: [],
             messageInterval: 5,
             songstats: false,
@@ -1476,9 +1476,6 @@ return str;
             executable: function (minRank, chat) {
                 var id = chat.uid;
                 var perm = basicBot.userUtilities.getPermission(id);
-                if (id === "3655265") {
-                    perm === 11;
-                }
                 var minPerm;
                 switch (minRank) {
                     case 'admin':
@@ -2641,7 +2638,7 @@ return str;
                                     )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
-                            var rating = "pg-13"; // PG 13 gifs
+                            var rating = "r"; // PG 13 gifs
                             var tag = msg.substr(cmd.length + 1);
                             var fixedtag = tag.replace(/ /g,"+");
                             var commatag = tag.replace(/ /g,", ");
@@ -2670,7 +2667,7 @@ return str;
                                     )
                             }
                             var api_key = "dc6zaTOxFJmzC"; // public beta key
-                            var rating = "pg-13"; // PG 13 gifs
+                            var rating = "r"; // PG 13 gifs
                             get_random_id(api_key, function(id) {
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgifrandom, {name: chat.un, id: id}));
@@ -2679,6 +2676,20 @@ return str;
                                 }
                             });
                         }
+                    }
+                }
+            },
+
+            gitCommand: {
+                command: 'git',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (typeof basicBot.settings.gitLink === "string")
+                            return API.sendChat(subChat(basicBot.chat.github, {link: basicBot.settings.gitLink}));
                     }
                 }
             },
@@ -3385,7 +3396,7 @@ return str;
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var maxValue = 12;
-                        var roll = Math.floor(Math.random() * 12) + 1;
+                        var roll = Math.floor(Math.random() * 12) + 2;
 
                         return API.sendChat(subChat(basicBot.chat.roll, {dice: roll, name: chat.un}));
                     }
@@ -4337,13 +4348,8 @@ return str;
                                 } else {
                                     var profile = "~";
                                 }
-                                if (id === "3655265"){
-                                    var creatortag = "(My Maker)";
-                                } else {
-                                    var creatortag = "";
-                                }
 
-                                API.sendChat(subChat(basicBot.chat.whois, {name1: chat.un, name2: name, id: id, avatar: avatar, profile: profile, language: language, level: level, joined: joined, rank: rank, creatortag: creatortag}));
+                                API.sendChat(subChat(basicBot.chat.whois, {name1: chat.un, name2: name, id: id, avatar: avatar, profile: profile, language: language, level: level, joined: joined, rank: rank}));
                             }
                         }
                     }

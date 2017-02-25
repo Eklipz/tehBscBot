@@ -104,7 +104,6 @@ User
 |!autowoot | | links to RCS, the advised script/plugin to use for autowooting |
 |!ba | | explains the Brand Ambassador rank |
 |!candy | (@user) | give a random candy to a user |
-|!catfact | | returns a random cat fact |
 |!commands | | gives a link to the commands |
 |!cookie | (@user) | give a cookie to someone |
 |!cycleinfo | | explains what the djcycle setting does |
@@ -118,6 +117,7 @@ User
 |!fortune | | get or give a fortune from the fortune teller |
 |!ghostbuster | @user | checks if user is ghosting |
 |!gif | (message) | returns a gif (from giphy) related to the tag provided, Returns a random gif if no tags are provided |
+|!git | | returns a link to the bot's repository |
 |!guidelines | | sends the list for what is expected of a staff member in this community |
 |!join | | join the Lotto if it's up |
 |!leave | | leave the Lotto if you joined |
@@ -158,9 +158,9 @@ Coming Soon... Hop3fully
 
 |Command | Description | Estimated Time |
 |:------:|:---------:|:---------------:|:-----------------------:|
+|!catfact | | returns a random cat fact |
 |!flip | | flips a coin |
 |!poll | | starts a poll for users to vote on |
-|!props | Gifts the DJ for playing a nice track |
 |!urban | | urban dictionary integration |
 |!streamalert | | automatically alert when streamer goes live |
 |idk|why not suggest something!||
