@@ -114,6 +114,7 @@ User
 |!eta | | shows how long before you reach the booth |
 |!fav | | remind people to favorite the room |
 |!fb | | links to the room's Facebook page (not set in settings) |
+|!flip | | flips a coin |
 |!fortune | | get or give a fortune from the fortune teller |
 |!ghostbuster | @user | checks if user is ghosting |
 |!gif | (message) | returns a gif (from giphy) related to the tag provided, Returns a random gif if no tags are provided |
@@ -159,7 +160,7 @@ Coming Soon... Hop3fully
 |Command | Description | Estimated Time |
 |:------:|:---------:|:---------------:|:-----------------------:|
 |!catfact | | returns a random cat fact |
-|!flip | | flips a coin |
+|!gamble | amt | gambling game |
 |!poll | | starts a poll for users to vote on |
 |!urban | | urban dictionary integration |
 |!streamalert | | automatically alert when streamer goes live |

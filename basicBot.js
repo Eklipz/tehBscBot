@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209", "3655265"];
 
     var basicBot = {
-        version: "4.20.6",
+        version: "4.20.7",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2532,6 +2532,25 @@ return str;
                     }
                 }
             },
+
+            flipCommand: {
+                command: ['flip', 'coin'],
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var val = "";
+                        var random = Math.random() * 100;
+                        if ((random -= 47) < 0) val = "Heads";
+                        if ((random -= 47) < 0) val = "Tails";
+                        if ((random -= 6) < 0) val = "The Side";
+
+                        return API.sendChat(subChat(basicBot.chat.flip, {coin: val, name: chat.un}));
+                    }
+                }
+            },
             
             forceskipCommand: {
                 command: ['forceskip', 'fs'],
@@ -3071,6 +3090,34 @@ return str;
                 }
             },
 
+            lottoCommand: {
+                command: 'lotto',
+                rank: 'manager',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (!basicBot.room.lotto.lottoStatus) {
+                            basicBot.room.lotto.startLotto();
+                        }
+                    }
+                }
+            },
+
+            lottoinfoCommand: {
+                command: 'lottoinfo',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        return API.sendChat(subChat(basicBot.chat.lottoinfo));
+                    }
+                }
+            },
+
             maxlengthCommand: {
                 command: 'maxlength',
                 rank: 'manager',
@@ -3286,6 +3333,20 @@ return str;
                 }
             },
 
+            rcsCommand: {
+                command: 'rcs',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (typeof basicBot.settings.rulesLink === "string")
+                            return API.sendChat(subChat(basicBot.chat.rcsinfo));
+                    }
+                }
+            },
+
             refCommand: {
                 command: 'ref',
                 rank: 'user',
@@ -3399,48 +3460,6 @@ return str;
                         var roll = Math.floor(Math.random() * 12) + 2;
 
                         return API.sendChat(subChat(basicBot.chat.roll, {dice: roll, name: chat.un}));
-                    }
-                }
-            },
-
-            lottoCommand: {
-                command: 'lotto',
-                rank: 'manager',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        if (!basicBot.room.lotto.lottoStatus) {
-                            basicBot.room.lotto.startLotto();
-                        }
-                    }
-                }
-            },
-
-            lottoinfoCommand: {
-                command: 'lottoinfo',
-                rank: 'user',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        return API.sendChat(subChat(basicBot.chat.lottoinfo));
-                    }
-                }
-            },
-
-            rcsCommand: {
-                command: 'rcs',
-                rank: 'user',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        if (typeof basicBot.settings.rulesLink === "string")
-                            return API.sendChat(subChat(basicBot.chat.rcsinfo));
                     }
                 }
             },

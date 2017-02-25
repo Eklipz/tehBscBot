@@ -292,6 +292,7 @@
 "etarestriction": "eta restriction",
 "fav": "/me Remember to click the star in the top bar to favorite this room!! http:\/\/i.imgur.com\/tIRPeZX.png",
 "facebook": "\/me Like us on facebook: %%LINK%%",
+"flip": "\/me [@%%NAME%%] You flipped a coin and it landed on %%COIN%% :white_circle:",
 "forceskip": "\/me [%%NAME%% used forceskip]",
 "genres": "\/me Please find the permissible room genres here: %%LINK%%",
 "ghosting": "[%%NAME1%%] %%NAME2%% is either ghosting or not here.",
@@ -407,7 +408,6 @@
 "valid": "\/me @%%NAME%% disconnected %%TIME%% ago and should be at position %%POSITION%%.",
 "validgifrandom": "\/me [@%%NAME%%] [Random GIF] http:\/\/i.giphy.com\/%%ID%%.gif",
 "validgiftags": "\/me [@%%NAME%%] [Tags: %%TAGS%%] http:\/\/i.giphy.com\/%%ID%%.gif",
-"version": "\/me [@%%NAME%%] Current Version: 4.20.6.debug",
 "voteratio": "\/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w\/m): %%RATIO%%.",
 "voteskip": "voteskip",
 "voteskipexceededlimit": "\/me @%%NAME%%, your song has exceeded the voteskip limit (%%LIMIT%% mehs).",
@@ -426,7 +426,7 @@
 "youarenext": "\/me @%%NAME%%, you are DJing after this song.",
 "youtube": "\/me [%%NAME%%] Subscribe to us on youtube: %%LINK%%",
 
-
+"version": "\/me [@%%NAME%%] Current Version: 4.20.7.debug",
 
 "eatcookie": "\/me eats a cookie.",
 "nousercookie": "\/em doesn't see %%NAME%% in room and eats a cookie himself.",
