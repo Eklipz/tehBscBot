@@ -197,7 +197,7 @@ return str;
     var botCreatorIDs = ["3851534", "4105209", "3655265"];
 
     var basicBot = {
-        version: "4.20.8",
+        version: "4.20.9",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -267,7 +267,7 @@ return str;
             rulesLink: "https://git.io/v6ezI",
             gitLink: "https://github.com/Eklipz/tehBscBot",
             themeLink: null,
-            fbLink: null,
+            fbLink: "https://www.facebook.com/groups/thagreenroom/",
             youtubeLink: null,
             website: "http://diamondlife.xyz",
             intervalMessages: [],
