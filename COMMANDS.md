@@ -9,7 +9,7 @@ Manager+
 --------
 
 |Command | Arguments |  Description | Converted to Node |
-|:------:|:---------:|:--------------------------------------:|
+|:------:|:---------:|:--------------------------------------:|:----:|
 |!add | @user | add user to the waitlist | X |
 |!afklimit | X | sets the maximum afk time | X |
 |!afkremoval | | toggles the afk check | X |
@@ -46,7 +46,7 @@ Bouncer
 -------
 
 |Command | Arguments |  Description | Converted to Node |
-|:------:|:---------:|:--------------------------------------:|
+|:------:|:---------:|:--------------------------------------:|:----:|
 |!active | (X) | shows how many users chatted in the past X minutes. If no X specified, 60 is set as default | X |
 |!afkreset | @user | resets the afk time of user | X |
 |!afktime | @user | shows how long user has been afk | X |
@@ -88,7 +88,7 @@ Resident DJ
 -----------
 
 |Command | Arguments |  Description | Converted to Node |
-|:------:|:---------:|:--------------------------------------:|
+|:------:|:---------:|:--------------------------------------:|:----:|
 |!link | | give a link to the current song | X |
 
 
@@ -97,7 +97,7 @@ User
 ----
 
 |Command | Arguments |  Description | Converted to Node |
-|:------:|:---------:|:--------------------------------------:|
+|:------:|:---------:|:--------------------------------------:|:----:|
 |!8ball | (message) | ask the bot a question, the bot will return random variations of a yes or no answer | X |
 |!abuse | | explains how to use the !dc command properly, rather than abusing it | X |
 |!acronym | | 6 random letters will be made, try to make an acronym out of them | X |
@@ -147,22 +147,22 @@ User
 All Sub-Commands
 -----------------
 
-|MainCommand | Sub-Command | Description |
-|:------:|:---------:|:--------------------------------------:|
-|!skip | history | if the song is in the "DJ history" |
-|^ bouncer+|nsfw | if the song played contained an NSFW image or sound |
-||sound | if the song played had horrible sound quality or no sound |
-||theme | if the song doesn't fit the room theme  |
-||unavailable | if the song is not available for some, most or all users |
+|MainCommand | Sub-Command | Description | Converted to Node |
+|:------:|:---------:|:--------------------------------------:|:----:|
+|!skip | history | if the song is in the "DJ history" | | X |
+|^ bouncer+|nsfw | if the song played contained an NSFW image or sound | | X |
+||sound | if the song played had horrible sound quality or no sound | | X |
+||theme | if the song doesn't fit the room theme  | | X |
+||unavailable | if the song is not available for some, most or all users | | X |
 
 Coming Soon... Hop3fully
 -------------------------
 
-|Command | Description | Estimated Time |
-|:------:|:---------:|:---------------:|:-----------------------:|
-|!catfact | | returns a random cat fact |
-|!gamble | amt | gambling game |
-|!poll | | starts a poll for users to vote on |
-|!urban | | urban dictionary integration |
-|!streamalert | | automatically alert when streamer goes live |
-|idk|why not suggest something!||
+|Command | Description | Estimated Time | Converted to Node |
+|:------:|:---------:|:---------------:|:-----------------------:|:----:|
+|!catfact | | returns a random cat fact | | X |
+|!gamble | amt | gambling game | | X |
+|!poll | | starts a poll for users to vote on | | X |
+|!urban | | urban dictionary integration | | X |
+|!streamalert | | automatically alert when streamer goes live | | X |
+|idk|why not suggest something!|| | X |
