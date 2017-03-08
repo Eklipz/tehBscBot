@@ -167,9 +167,9 @@
         return arr;
     };
 
-String.prototype.startsWith = function(str) {
-return this.substring(0, str.length) === str;
-};
+    String.prototype.startsWith = function(str) {
+        return this.substring(0, str.length) === str;
+    };
 
     function linkFixer(msg) {
         var parts = msg.splitBetween('<a href="', '<\/a>');
@@ -184,13 +184,13 @@ return this.substring(0, str.length) === str;
         return m;
     };
 
-        function decodeEntities(s) {
-var str, temp = document.createElement('p');
-temp.innerHTML = s;
-str = temp.textContent || temp.innerText;
-temp = null;
-return str;
-}; 
+    function decodeEntities(s) {
+        var str, temp = document.createElement('p');
+        temp.innerHTML = s;
+        str = temp.textContent || temp.innerText;
+        temp = null;
+        return str;
+    }; 
 
     var botCreator = "Matthew (Yemasthui)";
     var botMaintainer = "N8te420"

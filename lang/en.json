@@ -443,7 +443,7 @@
 "nousercandy": "\/em doesn't see %%NAME%% in this room.",
 "selfcandy": "\/me @%%NAME%%, Giving candies to yourself, How about giving other people candies :)",
 "candy": "\/me @%%NAMEFROM%% gives @%%NAMETO%%, %%CANDY%%!",
-"multicamdy": "\/me @%%NAMEFROM%% passes all @djs %%CANDY%%!",
+"multicandy": "\/me @%%NAMEFROM%% passes all @djs %%CANDY%%!",
 
 
 "eatshots": "\/me takes a shot.",
